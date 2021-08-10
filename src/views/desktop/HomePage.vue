@@ -12,7 +12,9 @@
         :thumb-url="movie.thumb_url"
         :alt-text="movie.name_origin"
       >
-        <TheDesktopPosterButtons :movie-id="movie.id" />
+        <TheDesktopPosterButtons
+          :movie-id="movie.id"
+        />
       </BasePoster>
 
       <BaseArrowButton
@@ -56,27 +58,29 @@ export default {
     BaseBlurHover
   },
 
-  data () {
-    return { descriptionActive: false, animation: false }
-  },
+  data () { return { descriptionActive: false, animation: false } },
+
   computed: {
     ...mapGetters(['movie', 'previous_movie', 'next_movie'])
   },
+
   async mounted () {
     this.animation = true
-    console.log('home')
     document.querySelectorAll('.wheelTarget')
       .forEach((wheelTarget) => wheelTarget.addEventListener('wheel', this.scrollDescription))
   },
+
   destroyed () {
     document.querySelectorAll('.wheelTarget')
       .forEach((wheelTarget) => wheelTarget.removeEventListener('wheel', this.scrollDescription))
   },
-  methods: {
 
+  methods: {
     ...mapActions(['buttonForwardOrBack', 'preDataChanger']),
 
-    scrollDescription (event) { this.descriptionActive = event.deltaY >= 1 },
+    scrollDescription (event) {
+      this.descriptionActive = event.deltaY >= 1
+    },
 
     onArrowClick (direction) {
       this.preDataChanger(direction)

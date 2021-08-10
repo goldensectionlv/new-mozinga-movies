@@ -1,18 +1,16 @@
 <template>
   <main class="main">
-    <DesktopSidebar class="main-left" />
+    <DesktopSidebar />
 
-    <div class="main-center">
+    <section>
       <transition name="slide">
         <HomePage v-show="$route.path === '/'" />
       </transition>
 
-      <transition
-        name="slide"
-      >
+      <transition name="slide">
         <router-view :key="$route.path" />
       </transition>
-    </div>
+    </section>
   </main>
 </template>
 
@@ -34,10 +32,6 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: minmax(280px, 21vw) 1fr;
-}
-
-.main-left {
-  background-color: rgb(196,196,196,.1);
 }
 
 @media (max-width: 1124px) {

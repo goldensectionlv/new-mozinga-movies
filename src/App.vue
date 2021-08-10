@@ -1,6 +1,6 @@
 <template>
   <div>
-    <preLoader v-if="!initialAnimation" />
+    <PreLoader v-if="!initialAnimation" />
     <transition name="fade">
       <v-app
         v-show="initialAnimation"
@@ -20,13 +20,13 @@
 import cookie from '@/store/cookie'
 import { mapGetters, mapActions } from 'vuex'
 import BaseBackground from '@/components/atoms/BaseBackground'
-import preLoader from '@/components/atoms/preLoader'
+import PreLoader from '@/components/atoms/PreLoader'
 
 export default {
   name: 'App',
   components: {
     BaseBackground,
-    preLoader
+    PreLoader
 
   },
   data () {
