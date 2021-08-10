@@ -58,7 +58,7 @@ export default {
 }
 
 .descriptionInactive {
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(0, 0, 0, .03);
   transform: translateY(calc(100% - 130px));
 }
 

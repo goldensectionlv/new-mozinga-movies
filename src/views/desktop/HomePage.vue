@@ -1,7 +1,6 @@
 <template>
   <div class="Home">
     <PreRender />
-
     <div class="HomeMain wheelTarget">
       <BaseArrowButton
         left
@@ -22,13 +21,10 @@
       />
     </div>
 
-    <transition name="fade">
-      <div
-        v-show="descriptionActive"
-        class="descriptionHover wheelTarget"
-        @click="descriptionActive = false"
-      />
-    </transition>
+    <BaseBlurHover
+      :activate-on="descriptionActive"
+      @close="descriptionActive = false"
+    />
 
     <Description
       class="wheelTarget"
@@ -46,25 +42,29 @@ import BaseArrowButton from '@/components/atoms/buttons/BaseArrowButton'
 import TheDesktopPosterButtons from '@/components/molecules/TheDesktopPosterButtons'
 import Description from '@/components/molecules/Description'
 import PreRender from '@/components/atoms/PreRender'
+import BaseBlurHover from '@/components/atoms/BaseBlurHover'
 
 export default {
-  name: 'Home',
+  name: 'HomePage',
 
   components: {
     BasePoster,
     BaseArrowButton,
     TheDesktopPosterButtons,
     Description,
-    PreRender
+    PreRender,
+    BaseBlurHover
   },
 
   data () {
-    return { descriptionActive: false }
+    return { descriptionActive: false, animation: false }
   },
   computed: {
     ...mapGetters(['movie', 'previous_movie', 'next_movie'])
   },
   async mounted () {
+    this.animation = true
+    console.log('home')
     document.querySelectorAll('.wheelTarget')
       .forEach((wheelTarget) => wheelTarget.addEventListener('wheel', this.scrollDescription))
   },
@@ -104,21 +104,4 @@ export default {
   justify-content: space-evenly;
   align-items: center;
 }
-.descriptionHover {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  backdrop-filter: blur(21px);
-  z-index: 1;
-
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 300ms ease;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
 </style>

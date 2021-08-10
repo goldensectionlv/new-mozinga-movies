@@ -38,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 .poster {
   border-radius: 15px;
+  user-select: none;
 }
 .img {
   width: 100%;

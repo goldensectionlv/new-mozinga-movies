@@ -9,24 +9,28 @@
         btn-text="Home"
         icon-name="home"
         active
+        @click.native="$router.push('/').catch(() => {})"
       />
 
       <BaseNavBarButton
         btn-text="Recommend"
         icon-name="head-heart-outline"
         mt30
+        @click.native="$router.push('/recommend').catch(() => {})"
       />
 
       <BaseNavBarButton
         btn-text="Очередь"
         icon-name="playlist-star"
         mt30
+        @click.native="$router.push('/watchlist').catch(() => {})"
       />
 
       <BaseNavBarButton
         btn-text="Просмотренные"
         icon-name="playlist-check"
         mt30
+        @click.native="$router.push('/watched').catch(() => {})"
       />
     </nav>
   </div>

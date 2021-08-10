@@ -1,14 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import DesktopLayout from '@/views/desktop/DesktopLayout'
+import WatchlistPage from '@/views/desktop/WatchlistPage'
+import RecommendPage from '@/views/desktop/RecommendPage'
+import WatchedPage from '@/views/desktop/WatchedPage'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: DesktopLayout,
+    children: [
+      {
+        path: '/recommend',
+        component: RecommendPage
+      },
+      {
+        path: '/watched',
+        component: WatchedPage
+      },
+      {
+        path: '/watchlist',
+        component: WatchlistPage
+      }
+    ]
   }
 ]
 

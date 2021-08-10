@@ -8,14 +8,8 @@
       >
         <BaseBackground :bg-url="movie.thumb_url" />
 
-        <main class="main">
-          <TheLeftBar class="main-left" />
-
-          <div class="main-center">
-            <router-view />
-          </div>
-
-          <div class="main-right" />
+        <main class="app-container">
+          <router-view />
         </main>
       </v-app>
     </transition>
@@ -26,14 +20,14 @@
 import cookie from '@/store/cookie'
 import { mapGetters, mapActions } from 'vuex'
 import BaseBackground from '@/components/atoms/BaseBackground'
-import TheLeftBar from '@/components/desktopLayout/TheLeftBar'
 import preLoader from '@/components/atoms/preLoader'
+
 export default {
   name: 'App',
   components: {
     BaseBackground,
-    TheLeftBar,
     preLoader
+
   },
   data () {
     return { initialAnimation: false }
@@ -67,6 +61,7 @@ html {
   box-sizing: border-box;
   overflow: hidden;
 }
+
 *,
 *::before,
 *::after {
@@ -78,39 +73,16 @@ html {
   background-color: transparent !important;
   font-family: 'Montserrat', sans-serif !important;
 }
-.main {
+
+.app-container {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: minmax(280px, 21vw) 1fr;
-}
-
-.main-left {
-  background-color: rgb(196,196,196,.1);
-}
-.main-right {
-  background-color: rgb(196,196,196,.1);
-  display: none;
-}
-
-@media (max-width: 1124px) {
-  .main {
-    grid-template-columns: minmax(280px, 21vw) 1fr;
-  }
-}
-
-@media (max-width: 900px) {
-  .main {
-    grid-template-columns: 1fr;
-  }
-  .main-left {
-    display: none !important;
-  }
 }
 
 .v-item-group.v-bottom-navigation .v-btn.v-size--default {
   height: inherit;
 }
+
 /** Montserrat Regular **/
 @font-face {
   font-family: "Montserrat";
@@ -119,6 +91,7 @@ html {
   src: url("../src/assets/fonts/Montserrat-Regular.woff2") format("woff2"),
   url("../src/assets/fonts/Montserrat-Regular.woff") format("woff");
 }
+
 /** Montserrat Medium **/
 @font-face {
   font-family: "Montserrat";
@@ -127,6 +100,7 @@ html {
   src: url("../src/assets/fonts/Montserrat-Medium.woff2") format("woff2"),
   url("../src/assets/fonts/Montserrat-Medium.woff") format("woff");
 }
+
 /** Montserrat SemiBold **/
 @font-face {
   font-family: "Montserrat";
@@ -135,6 +109,7 @@ html {
   src: url("../src/assets/fonts/Montserrat-SemiBold.woff2") format("woff2"),
   url("../src/assets/fonts/Montserrat-SemiBold.woff") format("woff");
 }
+
 /** Montserrat Bold **/
 @font-face {
   font-family: "Montserrat";
@@ -143,6 +118,7 @@ html {
   src: url("../src/assets/fonts/Montserrat-Bold.woff2") format("woff2"),
   url("../src/assets/fonts/Montserrat-Bold.woff") format("woff");
 }
+
 /** Montserrat ExtraBold **/
 @font-face {
   font-family: "Montserrat";
@@ -151,6 +127,7 @@ html {
   src: url("../src/assets/fonts/Montserrat-ExtraBold.woff2") format("woff2"),
   url("../src/assets/fonts/Montserrat-ExtraBold.woff") format("woff");
 }
+
 /** Montserrat Black **/
 @font-face {
   font-family: "Montserrat";
@@ -159,6 +136,7 @@ html {
   src: url("../src/assets/fonts/Montserrat-Black.woff2") format("woff2"),
   url("../src/assets/fonts/Montserrat-Black.woff") format("woff");
 }
+
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 0; /* Remove scrollbar space */
@@ -170,9 +148,9 @@ html {
 .fade-leave-active {
   transition: 500ms;
 }
+
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
 }
-
 </style>
