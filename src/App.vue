@@ -1,32 +1,178 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <preLoader v-if="!initialAnimation" />
+    <transition name="fade">
+      <v-app
+        v-show="initialAnimation"
+        class="my-app"
+      >
+        <BaseBackground :bg-url="movie.thumb_url" />
+
+        <main class="main">
+          <TheLeftBar class="main-left" />
+
+          <div class="main-center">
+            <router-view />
+          </div>
+
+          <div class="main-right" />
+        </main>
+      </v-app>
+    </transition>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import cookie from '@/store/cookie'
+import { mapGetters, mapActions } from 'vuex'
+import BaseBackground from '@/components/atoms/BaseBackground'
+import TheLeftBar from '@/components/desktopLayout/TheLeftBar'
+import preLoader from '@/components/atoms/preLoader'
+export default {
+  name: 'App',
+  components: {
+    BaseBackground,
+    TheLeftBar,
+    preLoader
+  },
+  data () {
+    return { initialAnimation: false }
+  },
+  computed: {
+    ...mapGetters(['movie'])
+  },
+  created () {
+    let device = cookie.getCookie('device')
+    if (device == null) device = cookie.uuidv4()
+    document.cookie = 'device=' + device + ';domain=;path=/'
+  },
+  async mounted () {
+    await this.createdHome()
+    this.initialAnimation = true
+  },
+  methods: {
+    ...mapActions(['createdHome'])
   }
 }
+</script>
+
+<style lang="scss" scoped>
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.my-app {
+  background-color: transparent !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(280px, 21vw) 1fr;
+}
+
+.main-left {
+  background-color: rgb(196,196,196,.1);
+}
+.main-right {
+  background-color: rgb(196,196,196,.1);
+  display: none;
+}
+
+@media (max-width: 1124px) {
+  .main {
+    grid-template-columns: minmax(280px, 21vw) 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+  .main-left {
+    display: none !important;
+  }
+}
+
+.v-item-group.v-bottom-navigation .v-btn.v-size--default {
+  height: inherit;
+}
+/** Montserrat Regular **/
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../src/assets/fonts/Montserrat-Regular.woff2") format("woff2"),
+  url("../src/assets/fonts/Montserrat-Regular.woff") format("woff");
+}
+/** Montserrat Medium **/
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-style: normal;
+  src: url("../src/assets/fonts/Montserrat-Medium.woff2") format("woff2"),
+  url("../src/assets/fonts/Montserrat-Medium.woff") format("woff");
+}
+/** Montserrat SemiBold **/
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-style: normal;
+  src: url("../src/assets/fonts/Montserrat-SemiBold.woff2") format("woff2"),
+  url("../src/assets/fonts/Montserrat-SemiBold.woff") format("woff");
+}
+/** Montserrat Bold **/
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-style: normal;
+  src: url("../src/assets/fonts/Montserrat-Bold.woff2") format("woff2"),
+  url("../src/assets/fonts/Montserrat-Bold.woff") format("woff");
+}
+/** Montserrat ExtraBold **/
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 800;
+  font-style: normal;
+  src: url("../src/assets/fonts/Montserrat-ExtraBold.woff2") format("woff2"),
+  url("../src/assets/fonts/Montserrat-ExtraBold.woff") format("woff");
+}
+/** Montserrat Black **/
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 900;
+  font-style: normal;
+  src: url("../src/assets/fonts/Montserrat-Black.woff2") format("woff2"),
+  url("../src/assets/fonts/Montserrat-Black.woff") format("woff");
+}
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 0; /* Remove scrollbar space */
+  height: 0;
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: 500ms;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 </style>
