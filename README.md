@@ -1,4 +1,4 @@
-# mozinga-movies
+# mozinga-movies dev in progress
 
 ## Project setup
 ```
