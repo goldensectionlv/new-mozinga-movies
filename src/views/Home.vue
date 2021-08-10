@@ -13,7 +13,7 @@
         :thumb-url="movie.thumb_url"
         :alt-text="movie.name_origin"
       >
-        <TheDesktopPosterButtons />
+        <TheDesktopPosterButtons :movie-id="movie.id" />
       </BasePoster>
 
       <BaseArrowButton
@@ -21,6 +21,14 @@
         @click.native="onArrowClick('forward')"
       />
     </div>
+
+    <transition name="fade">
+      <div
+        v-show="descriptionActive"
+        class="descriptionHover wheelTarget"
+        @click="descriptionActive = false"
+      />
+    </transition>
 
     <Description
       class="wheelTarget"
@@ -96,10 +104,17 @@ export default {
   justify-content: space-evenly;
   align-items: center;
 }
+.descriptionHover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(21px);
+  z-index: 1;
 
+}
 .fade-enter-active,
 .fade-leave-active {
-  transition: 210ms;
+  transition: opacity 300ms ease;
 }
 .fade-enter,
 .fade-leave-to {

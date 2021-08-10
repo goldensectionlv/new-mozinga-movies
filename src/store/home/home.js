@@ -70,6 +70,16 @@ export default {
         state.movie.year = state.previous_movie.year
         state.movie.description = state.previous_movie.description
       }
+    },
+    likeOrDislike: (state, response) => {
+      state.movieButtonsData.like = response.like
+      state.movieButtonsData.dislike = response.dislike
+      state.movieButtonsData.total_likes = response.total_likes
+      state.movieButtonsData.total_dislikes = response.total_dislikes
+    },
+    adToWatchedOrWatchlist (state, response) {
+      state.movieButtonsData.watched = response.watched
+      state.movieButtonsData.watchlist = response.watchlist
     }
   },
   actions: {
@@ -81,12 +91,23 @@ export default {
       const mainMovieData = await apiRequests.buttonForwardOrBack(direction)
       commit('buttonForwardOrBack', mainMovieData.response.data)
     },
-    preDataChanger: ({ commit }, direction) => commit('preDataChanger', direction)
+    preDataChanger: ({ commit }, direction) => commit('preDataChanger', direction),
+
+    likeOrDislike: async ({ commit }, args = { movie_id: null, action: '' }) => {
+      const response = await apiRequests.likeOrDislike(args)
+      commit('likeOrDislike', response.response.data)
+    },
+
+    adToWatchedOrWatchlist: async ({ commit }, args = { movie_id: null, action: '' }) => {
+      const response = await apiRequests.adToWatchedOrWatchlist(args)
+      commit('adToWatchedOrWatchlist', response.response.data)
+    }
   },
   getters: {
     movie: state => state.movie,
     previous_movie: state => state.previous_movie,
-    next_movie: state => state.next_movie
+    next_movie: state => state.next_movie,
+    movieButtonsData: state => state.movieButtonsData
 
   }
 }

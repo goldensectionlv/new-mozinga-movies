@@ -4,7 +4,8 @@
       'logoText': logoText,
       'descriptionHeaderText': descriptionHeaderText,
       'descriptionSubHeaderTextOne': descriptionSubHeaderTextOne,
-      'descriptionSubHeaderTextTwo': descriptionSubHeaderTextTwo
+      'descriptionSubHeaderTextTwo': descriptionSubHeaderTextTwo,
+      'likeOrDislikeText': likeOrDislikeText
     }"
   >
     <slot />
@@ -28,6 +29,10 @@ export default {
       default: false
     },
     descriptionSubHeaderTextTwo: {
+      type: Boolean,
+      default: false
+    },
+    likeOrDislikeText: {
       type: Boolean,
       default: false
     }
@@ -59,6 +64,13 @@ export default {
   font-size: 15px;
   font-weight: 700;
   color: white;
-  margin-top: 3px ;
+  margin-top: 3px;
+}
+
+.likeOrDislikeText {
+  font-size: 7pt;
+  color: #A8C2CF;
+  margin-top: 3px;
+  font-weight: bold;
 }
 </style>

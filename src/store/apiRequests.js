@@ -25,7 +25,7 @@ export default {
       return { response }
     }
   },
-  async buttonForwardOrBack (direction) {
+  async buttonForwardOrBack (direction = '') {
     const check = localStorage.getItem('token')
     if (check !== null) {
       const response = await axios.get(mainUrl + 'button_forward_or_back/' + direction, {
@@ -34,6 +34,39 @@ export default {
       return { response }
     } else {
       const response = await axios.get(mainUrl + 'button_forward_or_back/' + direction, {
+        withCredentials: true,
+        crossDomain: true,
+        headers: { device: cookie.getCookie('device') }
+      })
+      return { response }
+    }
+  },
+  async likeOrDislike (args = { movie_id: null, action: '' }) {
+    const check = localStorage.getItem('token')
+    if (check !== null) {
+      const response = await axios.get(mainUrl + 'api_like_or_dislike/' + args.movie_id + '/' + args.action, {
+        headers: { Authorization: `token ${check}` }
+      })
+      return { response }
+    } else {
+      const response = await axios.get(mainUrl + 'api_like_or_dislike/' + args.movie_id + '/' + args.action, {
+        withCredentials: true,
+        crossDomain: true,
+        headers: { device: cookie.getCookie('device') }
+      })
+      return { response }
+    }
+  },
+
+  async adToWatchedOrWatchlist (args = { movie_id: null, action: '' }) {
+    const check = localStorage.getItem('token')
+    if (check !== null) {
+      const response = await axios.get(mainUrl + 'add_to_watched_or_watchlist/' + args.movie_id + '/' + args.action, {
+        headers: { Authorization: `token ${check}` }
+      })
+      return { response }
+    } else {
+      const response = await axios.get(mainUrl + 'add_to_watched_or_watchlist/' + args.movie_id + '/' + args.action, {
         withCredentials: true,
         crossDomain: true,
         headers: { device: cookie.getCookie('device') }

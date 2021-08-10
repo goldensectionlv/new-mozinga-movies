@@ -5,10 +5,11 @@
         <v-btn
           class="action-button white--text text-lowercase"
           elevation="0"
-          color="rgba(196,196,196, 0.06)"
+          :color="active ? 'rgba(0,255,255,.6)' : 'rgba(196,196,196, 0.06)'"
         >
           {{ buttonName }}
         </v-btn>
+        <slot />
       </div>
     </div>
   </div>
@@ -21,6 +22,10 @@ export default {
     buttonName: {
       type: String,
       default: ''
+    },
+    active: {
+      type: Boolean,
+      default: false
     }
   }
 }

@@ -53,13 +53,11 @@ export default {
   border-top-right-radius: 21px;
   border-top-left-radius: 21px;
   background-color: rgba(0, 0, 0, .5);
-  backdrop-filter: blur(6px) opacity(1);
-  transition: background-color 110ms ease, transform 300ms, backdrop-filter 1s;
+  transition: background-color 300ms ease, transform 300ms;
   z-index: 2;
 }
 
 .descriptionInactive {
-  backdrop-filter: blur(6px) opacity(0);
   background-color: rgba(0, 0, 0, .1);
   transform: translateY(calc(100% - 130px));
 }
