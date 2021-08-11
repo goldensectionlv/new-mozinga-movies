@@ -1,5 +1,11 @@
 <template>
-  <div class="Home">
+  <div
+    class="Home"
+    tabindex="0"
+    @keyup.left="onArrowClick('back')"
+    @keyup.right="onArrowClick('forward')"
+    @wheel.prevent="scrollDescription"
+  >
     <PreRender />
     <div class="HomeMain wheelTarget">
       <BaseArrowButton
@@ -22,13 +28,14 @@
       <BaseArrowButton
         right
         @click.native="onArrowClick('forward')"
-        @keyup.native.right="onArrowClick('forward')"
+        @keyup.native="onArrowClick('forward')"
       />
     </div>
 
     <BaseBlurHover
       :activate-on="descriptionActive"
       @close="descriptionActive = false"
+      @wheel.native.prevent="scrollDescription"
     />
 
     <Description
@@ -36,6 +43,7 @@
       :description-active="descriptionActive"
       :movie="movie"
       @openDescription="descriptionActive = !descriptionActive"
+      @wheel.native.prevent="scrollDescription"
     />
   </div>
 </template>
@@ -75,13 +83,6 @@ export default {
 
   async mounted () {
     this.animation = true
-    document.querySelectorAll('.wheelTarget')
-      .forEach((wheelTarget) => wheelTarget.addEventListener('wheel', this.scrollDescription), false)
-  },
-
-  destroyed () {
-    document.querySelectorAll('.wheelTarget')
-      .forEach((wheelTarget) => wheelTarget.removeEventListener('wheel', this.scrollDescription), false)
   },
 
   methods: {
@@ -120,5 +121,8 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+*:focus {
+  outline: none;
 }
 </style>
