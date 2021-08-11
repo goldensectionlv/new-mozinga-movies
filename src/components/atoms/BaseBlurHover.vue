@@ -26,13 +26,14 @@ export default {
   position: absolute;
   height: 100%;
   width: 100%;
-  backdrop-filter: blur(21px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   z-index: 1;
 
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 600ms ease;
+  transition: opacity 200ms ease;
 }
 .fade-enter,
 .fade-leave-to {

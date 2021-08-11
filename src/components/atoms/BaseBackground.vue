@@ -6,7 +6,7 @@
       class="bg-main_blur"
       :style="{backgroundImage: 'url( ' + bgUrl + ')'}"
     >
-      <div class="bg-main_blur_cover" />
+      <div class="cover" />
     </div>
   </div>
 </template>
@@ -34,13 +34,14 @@ export default {
     height: 100%;
     background-position: center;
     background-size: cover;
+    filter: blur(60px);
 
-    &_cover {
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, .30);
-      backdrop-filter: blur(60px);
-    }
   }
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .30);
 }
 </style>

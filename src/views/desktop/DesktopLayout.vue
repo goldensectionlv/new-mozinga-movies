@@ -3,11 +3,17 @@
     <DesktopSidebar class="main-left" />
 
     <section class="section">
-      <transition name="slide">
+      <transition
+        name="slide"
+        mode="out-in"
+      >
         <HomePage v-show="$route.path === '/'" />
       </transition>
 
-      <transition name="slide">
+      <transition
+        name="slide"
+        mode="out-in"
+      >
         <router-view :key="$route.path" />
       </transition>
     </section>
@@ -59,7 +65,11 @@ export default {
 }
 
 .slide-enter {
-  transform: translate(100%, 0);
+  transform: translate(50%, 0);
   opacity: 1;
+}
+
+.slide-leave-to {
+  transform: translate(0, 0);
 }
 </style>

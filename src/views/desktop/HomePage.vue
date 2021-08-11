@@ -22,6 +22,7 @@
       <BaseArrowButton
         right
         @click.native="onArrowClick('forward')"
+        @keyup.native.right="onArrowClick('forward')"
       />
     </div>
 
@@ -75,18 +76,19 @@ export default {
   async mounted () {
     this.animation = true
     document.querySelectorAll('.wheelTarget')
-      .forEach((wheelTarget) => wheelTarget.addEventListener('wheel', this.scrollDescription))
+      .forEach((wheelTarget) => wheelTarget.addEventListener('wheel', this.scrollDescription), false)
   },
 
   destroyed () {
     document.querySelectorAll('.wheelTarget')
-      .forEach((wheelTarget) => wheelTarget.removeEventListener('wheel', this.scrollDescription))
+      .forEach((wheelTarget) => wheelTarget.removeEventListener('wheel', this.scrollDescription), false)
   },
 
   methods: {
     ...mapActions(['buttonForwardOrBack', 'preDataChanger']),
 
     scrollDescription (event) {
+      event.preventDefault()
       this.descriptionActive = event.deltaY >= 1
     },
 
