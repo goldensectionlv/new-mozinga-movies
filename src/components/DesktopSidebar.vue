@@ -8,7 +8,7 @@
       <BaseNavBarButton
         btn-text="Home"
         icon-name="home"
-        active
+        :active="$route.path === '/'"
         @click.native="$router.push('/').catch(() => {})"
       />
 
@@ -16,6 +16,7 @@
         btn-text="Recommend"
         icon-name="head-heart-outline"
         mt30
+        :active="$route.path === '/recommend'"
         @click.native="$router.push('/recommend').catch(() => {})"
       />
 
@@ -23,6 +24,7 @@
         btn-text="Очередь"
         icon-name="playlist-star"
         mt30
+        :active="$route.path === '/watchlist'"
         @click.native="$router.push('/watchlist').catch(() => {})"
       />
 
@@ -30,6 +32,7 @@
         btn-text="Просмотренные"
         icon-name="playlist-check"
         mt30
+        :active="$route.path === '/watched'"
         @click.native="$router.push('/watched').catch(() => {})"
       />
     </nav>

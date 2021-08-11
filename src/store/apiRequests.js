@@ -73,5 +73,22 @@ export default {
       })
       return { response }
     }
+  },
+
+  async getWatchlist (size) {
+    const check = localStorage.getItem('token')
+    if (check !== null) {
+      const response = await axios.get(mainUrl + 'api_watchlist/' + size, {
+        headers: { Authorization: `token ${check}` }
+      })
+      return { response }
+    } else {
+      const response = await axios.get(mainUrl + 'api_watchlist/' + size, {
+        withCredentials: true,
+        crossDomain: true,
+        headers: { device: cookie.getCookie('device') }
+      })
+      return { response }
+    }
   }
 }

@@ -1,8 +1,8 @@
 <template>
   <main class="main">
-    <DesktopSidebar />
+    <DesktopSidebar class="main-left" />
 
-    <section>
+    <section class="section">
       <transition name="slide">
         <HomePage v-show="$route.path === '/'" />
       </transition>
@@ -17,6 +17,7 @@
 <script>
 import DesktopSidebar from '@/components/DesktopSidebar'
 import HomePage from '@/views/desktop/HomePage'
+
 export default {
   name: 'DesktopLayout',
   components: {
@@ -32,6 +33,10 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: minmax(280px, 21vw) 1fr;
+}
+
+.section {
+  position: relative;
 }
 
 @media (max-width: 1124px) {
@@ -52,6 +57,7 @@ export default {
 .slide-enter-active {
   transition: 300ms;
 }
+
 .slide-enter {
   transform: translate(100%, 0);
   opacity: 1;

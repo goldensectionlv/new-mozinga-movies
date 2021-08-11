@@ -38,7 +38,7 @@ export default {
   padding: 0;
   height: 100% !important;
   border-radius: 15px;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 9pt;
   letter-spacing: 0;
 }

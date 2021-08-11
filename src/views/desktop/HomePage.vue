@@ -11,6 +11,8 @@
         :height="66"
         :thumb-url="movie.thumb_url"
         :alt-text="movie.name_origin"
+        :slide-direction="slideDirection"
+        @posterClick="descriptionActive = true"
       >
         <TheDesktopPosterButtons
           :movie-id="movie.id"
@@ -58,7 +60,13 @@ export default {
     BaseBlurHover
   },
 
-  data () { return { descriptionActive: false, animation: false } },
+  data () {
+    return {
+      descriptionActive: false,
+      animation: false,
+      slideDirection: ''
+    }
+  },
 
   computed: {
     ...mapGetters(['movie', 'previous_movie', 'next_movie'])
@@ -83,6 +91,9 @@ export default {
     },
 
     onArrowClick (direction) {
+      console.log(direction)
+      if (direction === 'forward') this.slideDirection = 'forward'
+      else if (direction === 'back') this.slideDirection = 'back'
       this.preDataChanger(direction)
       this.buttonForwardOrBack(direction)
     }

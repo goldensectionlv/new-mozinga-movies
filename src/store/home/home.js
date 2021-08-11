@@ -43,7 +43,6 @@ export default {
       state.miniRecommend = mainMovieData.recommend_list
       state.previous_movie = mainMovieData.previous_movie
       state.next_movie = mainMovieData.next_movie
-      console.log('mutating')
     },
     buttonForwardOrBack: (state, mainMovieData) => {
       state.movie = mainMovieData.movie

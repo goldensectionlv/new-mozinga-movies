@@ -1,16 +1,23 @@
 <template>
   <div class="poster">
-    <img
-      class="img"
-      :src="thumbUrl"
-      :alt="altText"
-      :style="{
-        height: height + 'vh',
-        width: (height / 3) * 2 + 'vh',
-        minHeight: '450px',
-        minWidth: '300px'
-      }"
+    <transition
+      :name="slideDirection"
+      mode="out-in"
     >
+      <img
+        :key="thumbUrl"
+        class="img"
+        :src="thumbUrl"
+        :alt="altText"
+        :style="{
+          height: height + 'vh',
+          width: (height / 3) * 2 + 'vh',
+          minHeight: '450px',
+          minWidth: '300px'
+        }"
+        @click="$emit('posterClick')"
+      >
+    </transition>
     <slot />
   </div>
 </template>
@@ -30,6 +37,10 @@ export default {
     height: {
       type: Number,
       default: 1
+    },
+    slideDirection: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -44,10 +55,27 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 15px;
+  cursor: pointer;
 }
-a img, :link img, :visited img {
 
-  border: 0;
-
+.back-enter-active {
+  transition: 450ms;
 }
+.back-enter {
+  transform: translate(20%, 0%);
+  opacity: 1;
+}
+.back-leave-to {
+  transform: translate(0, 0);
+}
+.forward-enter-active {
+  transition: 450ms;
+}
+.forward-enter {
+  transform: translate(-20%, 0%);
+}
+.forward-leave-to {
+  transform: translate(0, 0);
+}
+
 </style>

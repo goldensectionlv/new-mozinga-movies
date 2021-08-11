@@ -71,6 +71,6 @@ export default {
   font-size: 7pt;
   color: #A8C2CF;
   margin-top: 3px;
-  font-weight: bold;
+  font-weight: 600;
 }
 </style>
