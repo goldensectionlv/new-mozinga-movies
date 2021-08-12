@@ -13,7 +13,6 @@ export default {
         }
       }
     }
-    console.log(cookieValue)
     return cookieValue
   },
   uuidv4 () {
