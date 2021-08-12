@@ -1,4 +1,5 @@
 import apiRequests from '@/store/apiRequests'
+
 export default {
   state: {
     watchlistFull: []

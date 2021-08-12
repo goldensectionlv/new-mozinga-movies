@@ -25,6 +25,7 @@
 
 <script>
 import BaseText from '@/components/atoms/BaseText'
+
 export default {
   name: 'Description',
   components: {
@@ -37,7 +38,9 @@ export default {
     },
     movie: {
       type: Object,
-      default () { return [] }
+      default () {
+        return []
+      }
     }
   }
 }

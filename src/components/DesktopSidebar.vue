@@ -25,7 +25,7 @@
         icon-name="playlist-star"
         mt30
         :active="$route.path === '/watchlist'"
-        @click.native="$router.push('/watchlist').catch(() => {})"
+        @click.native="clickWatchlist"
       />
 
       <BaseNavBarButton
@@ -42,11 +42,19 @@
 <script>
 import BaseText from '@/components/atoms/BaseText'
 import BaseNavBarButton from '@/components/atoms/buttons/BaseNavBarButton'
+import { mapActions } from 'vuex'
 export default {
   name: 'TheLeftBar',
   components: {
     BaseText,
     BaseNavBarButton
+  },
+  methods: {
+    ...mapActions(['getWatchlist']),
+    clickWatchlist () {
+      this.$router.push('/watchlist').catch(() => {})
+      this.getWatchlist('full')
+    }
   }
 }
 </script>

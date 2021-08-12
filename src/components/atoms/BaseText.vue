@@ -5,7 +5,8 @@
       'descriptionHeaderText': descriptionHeaderText,
       'descriptionSubHeaderTextOne': descriptionSubHeaderTextOne,
       'descriptionSubHeaderTextTwo': descriptionSubHeaderTextTwo,
-      'likeOrDislikeText': likeOrDislikeText
+      'likeOrDislikeText': likeOrDislikeText,
+      'pageHeader': pageHeader
     }"
   >
     <slot />
@@ -33,6 +34,10 @@ export default {
       default: false
     },
     likeOrDislikeText: {
+      type: Boolean,
+      default: false
+    },
+    pageHeader: {
       type: Boolean,
       default: false
     }
@@ -72,5 +77,12 @@ export default {
   color: #A8C2CF;
   margin-top: 3px;
   font-weight: 600;
+}
+
+.pageHeader {
+  color: white;
+  font-weight: 900;
+  font-size: 30px;
+  margin-bottom: 30px;
 }
 </style>

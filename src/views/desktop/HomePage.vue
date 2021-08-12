@@ -7,7 +7,7 @@
     @wheel.prevent="scrollDescription"
   >
     <PreRender />
-    <div class="HomeMain wheelTarget">
+    <div class="HomeMain">
       <BaseArrowButton
         left
         @click.native="onArrowClick('back')"
@@ -28,7 +28,6 @@
       <BaseArrowButton
         right
         @click.native="onArrowClick('forward')"
-        @keyup.native="onArrowClick('forward')"
       />
     </div>
 
@@ -39,7 +38,6 @@
     />
 
     <Description
-      class="wheelTarget"
       :description-active="descriptionActive"
       :movie="movie"
       @openDescription="descriptionActive = !descriptionActive"
@@ -94,9 +92,9 @@ export default {
     },
 
     onArrowClick (direction) {
-      console.log(direction)
       if (direction === 'forward') this.slideDirection = 'forward'
       else if (direction === 'back') this.slideDirection = 'back'
+
       this.preDataChanger(direction)
       this.buttonForwardOrBack(direction)
     }
@@ -122,6 +120,7 @@ export default {
   justify-content: space-evenly;
   align-items: center;
 }
+
 *:focus {
   outline: none;
 }

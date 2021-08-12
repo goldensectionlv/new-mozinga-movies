@@ -14,7 +14,8 @@
         name="slide"
         mode="out-in"
       >
-        <router-view :key="$route.path" />
+        <!--        <router-view :key="$route.path" />-->
+        <WatchlistPage v-show="$route.path === '/watchlist'" />
       </transition>
     </section>
   </main>
@@ -23,12 +24,14 @@
 <script>
 import DesktopSidebar from '@/components/DesktopSidebar'
 import HomePage from '@/views/desktop/HomePage'
+import WatchlistPage from '@/views/desktop/WatchlistPage'
 
 export default {
   name: 'DesktopLayout',
   components: {
     DesktopSidebar,
-    HomePage
+    HomePage,
+    WatchlistPage
   }
 }
 </script>
@@ -61,12 +64,12 @@ export default {
 }
 
 .slide-enter-active {
-  transition: 300ms;
+  transition: transform 600ms, opacity 600ms;
 }
 
 .slide-enter {
-  transform: translate(50%, 0);
-  opacity: 1;
+  transform: translate(15%, 0);
+  opacity: 0;
 }
 
 .slide-leave-to {

@@ -2,28 +2,39 @@
   <div
     class="watchlist"
   >
+    <BaseText page-header>
+      Очередь просмотра
+    </BaseText>
     <div class="grid">
       <div
         v-for="movie in watchlist"
         :key="movie.id"
-        class="zoom"
+        style="width: 100%; padding-bottom: 150%; position: relative"
       >
-        <img
-          class="img"
-          style="width: 100%"
-          :src="movie.thumb_url"
-          :alt="movie.name"
+        <div
+          style="width: 100%; height: 100%; position: absolute"
+          class="zoom"
         >
-        <BaseText description-sub-header-text-two>
-          {{ movie.name }}
-        </BaseText>
+          <v-img
+            class="img fill-height"
+            style="width: 100%"
+            :src="movie.thumb_url"
+            :alt="movie.name"
+          />
+          <BaseText
+            description-sub-header-text-two
+            style="margin-top: 9px;"
+          >
+            {{ movie.name }}
+          </BaseText>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import BaseText from '@/components/atoms/BaseText'
 
 export default {
@@ -36,12 +47,6 @@ export default {
       watchlist: 'watchlistFull'
     })
 
-  },
-  async mounted () {
-    await this.getWatchlist('full')
-  },
-  methods: {
-    ...mapActions(['getWatchlist'])
   }
 }
 </script>
@@ -67,6 +72,8 @@ export default {
 }
 
 .img {
+  height: 100%;
+  width: 100%;
   border-radius: 12px;
   cursor: pointer;
 }

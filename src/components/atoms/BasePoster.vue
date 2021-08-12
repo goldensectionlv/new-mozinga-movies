@@ -59,20 +59,21 @@ export default {
 }
 
 .back-enter-active {
-  transition: 450ms;
+  transition: transform 600ms, opacity 300ms;
 }
 .back-enter {
-  transform: translate(20%, 0%);
-  opacity: 1;
+  transform: translate(-20%, 0%);
+  opacity: 0;
 }
 .back-leave-to {
   transform: translate(0, 0);
 }
 .forward-enter-active {
-  transition: 450ms;
+  transition: transform 600ms, opacity 540ms;
 }
 .forward-enter {
-  transform: translate(-20%, 0%);
+  transform: translate(20%, 0%);
+  opacity: 0;
 }
 .forward-leave-to {
   transform: translate(0, 0);
