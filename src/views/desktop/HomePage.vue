@@ -7,6 +7,7 @@
     @wheel.prevent="scrollDescription"
   >
     <PreRender />
+
     <div class="HomeMain">
       <BaseArrowButton
         left

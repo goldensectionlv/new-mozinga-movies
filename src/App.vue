@@ -42,13 +42,12 @@ export default {
   },
   async mounted () {
     await this.createdHome()
-    console.log('created')
     this.initialAnimation = true
     await this.getWatchlist('full')
-    console.log('watchlist')
+    await this.getWatchedList('full')
   },
   methods: {
-    ...mapActions(['createdHome', 'getWatchlist'])
+    ...mapActions(['createdHome', 'getWatchlist', 'getWatchedList'])
   }
 }
 </script>

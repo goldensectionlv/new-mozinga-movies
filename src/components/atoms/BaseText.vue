@@ -83,6 +83,5 @@ export default {
   color: white;
   font-weight: 900;
   font-size: 30px;
-  margin-bottom: 30px;
 }
 </style>

@@ -90,5 +90,22 @@ export default {
       })
       return { response }
     }
+  },
+
+  async getWatchedList (listType) {
+    const check = localStorage.getItem('token')
+    let response = []
+    if (check !== null) {
+      response = await axios.get(mainUrl + 'api_watched/' + listType, {
+        headers: { Authorization: `token ${check}` }
+      })
+    } else {
+      response = await axios.get(mainUrl + 'api_watched/' + listType, {
+        withCredentials: true,
+        crossDomain: true,
+        headers: { device: cookie.getCookie('device') }
+      })
+    }
+    return { response }
   }
 }

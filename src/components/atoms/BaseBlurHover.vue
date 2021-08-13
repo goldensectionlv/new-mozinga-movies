@@ -2,7 +2,7 @@
   <transition name="fade">
     <div
       v-show="activateOn"
-      class="descriptionHover wheelTarget"
+      class="descriptionHover"
       @click="$emit('close')"
     />
   </transition>
@@ -26,6 +26,7 @@ export default {
   position: absolute;
   height: 100%;
   width: 100%;
+  border-top-left-radius: 21px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 1;

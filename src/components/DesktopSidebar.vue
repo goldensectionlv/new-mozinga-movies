@@ -53,7 +53,7 @@ export default {
     ...mapActions(['getWatchlist']),
     clickWatchlist () {
       this.$router.push('/watchlist').catch(() => {})
-      this.getWatchlist('full')
+      // this.getWatchlist('full')
     }
   }
 }

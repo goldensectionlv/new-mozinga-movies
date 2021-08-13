@@ -1,6 +1,6 @@
 <template>
   <div
-    class="watchlist"
+    class="pageContainer"
   >
     <h1>recommend</h1>
   </div>
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.watchlist {
+.pageContainer {
   background-color: rgba(0,255,255,0.1);
   width: 100%;
   height: 100%;
@@ -27,6 +27,7 @@ export default {
   align-items: center;
   justify-content: center;
   color: white;
+  border-top-left-radius: 21px;
 }
 
 </style>

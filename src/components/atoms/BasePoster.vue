@@ -59,7 +59,7 @@ export default {
 }
 
 .back-enter-active {
-  transition: transform 600ms, opacity 300ms;
+  transition: transform 600ms, opacity 600ms;
 }
 .back-enter {
   transform: translate(-20%, 0%);
@@ -69,7 +69,7 @@ export default {
   transform: translate(0, 0);
 }
 .forward-enter-active {
-  transition: transform 600ms, opacity 540ms;
+  transition: transform 600ms, opacity 600ms;
 }
 .forward-enter {
   transform: translate(20%, 0%);

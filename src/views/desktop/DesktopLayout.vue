@@ -14,8 +14,22 @@
         name="slide"
         mode="out-in"
       >
-        <!--        <router-view :key="$route.path" />-->
+        <RecommendPage v-show="$route.path === '/recommend'" />
+      </transition>
+
+      <transition
+        name="slide"
+        mode="out-in"
+      >
+        <!--        <router-view :key="$route.path" /> - not used, because need v-show render for better ux-->
         <WatchlistPage v-show="$route.path === '/watchlist'" />
+      </transition>
+
+      <transition
+        name="slide"
+        mode="out-in"
+      >
+        <WatchedPage v-show="$route.path === '/watched'" />
       </transition>
     </section>
   </main>
@@ -25,13 +39,17 @@
 import DesktopSidebar from '@/components/DesktopSidebar'
 import HomePage from '@/views/desktop/HomePage'
 import WatchlistPage from '@/views/desktop/WatchlistPage'
+import WatchedPage from '@/views/desktop/WatchedPage'
+import RecommendPage from '@/views/desktop/RecommendPage'
 
 export default {
   name: 'DesktopLayout',
   components: {
     DesktopSidebar,
     HomePage,
-    WatchlistPage
+    WatchlistPage,
+    WatchedPage,
+    RecommendPage
   }
 }
 </script>

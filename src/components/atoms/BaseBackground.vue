@@ -3,6 +3,7 @@
     class="bg-main"
   >
     <div
+      :key="bgUrl"
       class="bg-main_blur"
       :style="{backgroundImage: 'url( ' + bgUrl + ')'}"
     >

@@ -43,6 +43,7 @@ export default {
       state.miniRecommend = mainMovieData.recommend_list
       state.previous_movie = mainMovieData.previous_movie
       state.next_movie = mainMovieData.next_movie
+      console.log('home page loaded')
     },
     buttonForwardOrBack: (state, mainMovieData) => {
       state.movie = mainMovieData.movie
@@ -69,6 +70,7 @@ export default {
         state.movie.year = state.previous_movie.year
         state.movie.description = state.previous_movie.description
       }
+      console.log(`pre data change for ${direction}`)
     },
     likeOrDislike: (state, response) => {
       state.movieButtonsData.like = response.like
@@ -89,17 +91,20 @@ export default {
     buttonForwardOrBack: async ({ commit }, direction) => {
       const mainMovieData = await apiRequests.buttonForwardOrBack(direction)
       commit('buttonForwardOrBack', mainMovieData.response.data)
+      console.log(`btn ${direction} action`)
     },
     preDataChanger: ({ commit }, direction) => commit('preDataChanger', direction),
 
     likeOrDislike: async ({ commit }, args = { movie_id: null, action: '' }) => {
       const response = await apiRequests.likeOrDislike(args)
       commit('likeOrDislike', response.response.data)
+      console.log(`btn ${args.action} pressed`)
     },
 
     adToWatchedOrWatchlist: async ({ commit }, args = { movie_id: null, action: '' }) => {
       const response = await apiRequests.adToWatchedOrWatchlist(args)
       commit('adToWatchedOrWatchlist', response.response.data)
+      console.log(`btn ${args.action} pressed`)
     }
   },
   getters: {
