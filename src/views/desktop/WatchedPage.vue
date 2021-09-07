@@ -18,7 +18,7 @@
         @movieClick="movieClick"
       >
         <BaseText
-          description-sub-header-text-two
+          title-movie-name-for-card
           style="margin-top: 12px;"
         >
           {{ movie.name }}
@@ -56,6 +56,7 @@ export default {
 //temp repeat code
 .pageContainer {
   width: 100%;
+  //width: clamp(100%, 10%, 100%);
   height: 100vh;
   overflow-y: scroll;
   color: white;

@@ -95,13 +95,13 @@ export default {
     },
     preDataChanger: ({ commit }, direction) => commit('preDataChanger', direction),
 
-    likeOrDislike: async ({ commit }, args = { movie_id: null, action: '' }) => {
+    likeOrDislike: async ({ commit }, args = { movie_id: null, action: 'like/dislike' }) => {
       const response = await apiRequests.likeOrDislike(args)
       commit('likeOrDislike', response.response.data)
       console.log(`btn ${args.action} pressed`)
     },
 
-    adToWatchedOrWatchlist: async ({ commit }, args = { movie_id: null, action: '' }) => {
+    adToWatchedOrWatchlist: async ({ commit }, args = { movie_id: null, action: 'watchlist/watched' }) => {
       const response = await apiRequests.adToWatchedOrWatchlist(args)
       commit('adToWatchedOrWatchlist', response.response.data)
       console.log(`btn ${args.action} pressed`)

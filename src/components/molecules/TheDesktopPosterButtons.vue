@@ -74,6 +74,7 @@ export default {
   width: 100%;
   justify-content: space-between;
   margin-top: 12px;
+  padding-bottom: 21px;
 }
 
 </style>

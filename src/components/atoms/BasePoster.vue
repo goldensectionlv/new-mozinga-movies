@@ -12,8 +12,10 @@
         :style="{
           height: height + 'vh',
           width: (height / 3) * 2 + 'vh',
-          minHeight: '450px',
-          minWidth: '300px'
+          minHeight: '300px',
+          minWidth: '150px',
+          maxHeight: '676px',
+          maxWidth: '451px'
         }"
         @click="$emit('posterClick')"
       >
@@ -51,11 +53,19 @@ export default {
   border-radius: 15px;
   user-select: none;
 }
+
 .img {
   width: 100%;
   height: 100%;
   border-radius: 15px;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .img {
+    width: 100% !important;
+    height: auto !important;
+  }
 }
 
 .back-enter-active {

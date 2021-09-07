@@ -1,7 +1,7 @@
 <template>
   <v-btn
     color="rgba(255,255,255, .1)"
-    style="margin: 3px"
+    style="margin: 15px"
     fab
     light
     elevation="0"

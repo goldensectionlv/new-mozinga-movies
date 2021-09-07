@@ -7,7 +7,6 @@
       <div style="width: 100%; height: 100%; position: absolute">
         <v-img
           class="img fill-height"
-          style="width: 100%"
           :src="imgUrl"
           :alt="altText"
         />

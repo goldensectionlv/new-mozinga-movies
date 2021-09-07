@@ -6,7 +6,11 @@
       'descriptionSubHeaderTextOne': descriptionSubHeaderTextOne,
       'descriptionSubHeaderTextTwo': descriptionSubHeaderTextTwo,
       'likeOrDislikeText': likeOrDislikeText,
-      'pageHeader': pageHeader
+      'pageHeader': pageHeader,
+      'titleMovieNameForCard': titleMovieNameForCard,
+      'descriptionTextTab': descriptionTextTab,
+      'detailsTabHeader': detailsTabHeader,
+      'detailsTabText': detailsTabText
     }"
   >
     <slot />
@@ -38,6 +42,22 @@ export default {
       default: false
     },
     pageHeader: {
+      type: Boolean,
+      default: false
+    },
+    titleMovieNameForCard: {
+      type: Boolean,
+      default: false
+    },
+    descriptionTextTab: {
+      type: Boolean,
+      default: false
+    },
+    detailsTabHeader: {
+      type: Boolean,
+      default: false
+    },
+    detailsTabText: {
       type: Boolean,
       default: false
     }
@@ -72,6 +92,23 @@ export default {
   margin-top: 3px;
 }
 
+.descriptionTextTab {
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 16px;
+  color: white;
+}
+
+.detailsTabHeader {
+  color: white;
+  font-weight: 800;
+}
+
+.detailsTabText {
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+}
 .likeOrDislikeText {
   font-size: 7pt;
   color: #A8C2CF;
@@ -83,5 +120,12 @@ export default {
   color: white;
   font-weight: 900;
   font-size: 30px;
+}
+
+.titleMovieNameForCard {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin-top: 3px;
 }
 </style>

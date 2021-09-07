@@ -5,7 +5,7 @@
         <v-btn
           class="action-button white--text text-lowercase"
           elevation="0"
-          :color="active ? 'rgba(0,255,255,.6)' : 'rgba(196,196,196, 0.06)'"
+          :color="active ? activeColor : color"
         >
           {{ buttonName }}
         </v-btn>
@@ -26,12 +26,20 @@ export default {
     active: {
       type: Boolean,
       default: false
+    },
+    activeColor: {
+      type: String,
+      default: 'rgba(0,255,255,.6)'
+    },
+    color: {
+      type: String,
+      default: 'rgba(196,196,196, 0.06)'
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .action-button {
   width: 100%;
   min-width: 0;

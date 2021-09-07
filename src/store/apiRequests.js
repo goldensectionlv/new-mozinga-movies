@@ -107,5 +107,21 @@ export default {
       })
     }
     return { response }
+  },
+  async recommendSliced () {
+    const check = localStorage.getItem('token')
+    if (check !== null) {
+      const response = await axios.get(mainUrl + 'api_recommend_script_sliced', {
+        headers: { Authorization: `token ${check}` }
+      })
+      return { response }
+    } else {
+      const response = await axios.get(mainUrl + 'api_recommend_script_sliced', {
+        withCredentials: true,
+        crossDomain: true,
+        headers: { device: cookie.getCookie('device') }
+      })
+      return { response }
+    }
   }
 }

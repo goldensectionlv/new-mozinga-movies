@@ -52,7 +52,7 @@ import { mapGetters, mapActions } from 'vuex'
 import BasePoster from '@/components/atoms/BasePoster'
 import BaseArrowButton from '@/components/atoms/buttons/BaseArrowButton'
 import TheDesktopPosterButtons from '@/components/molecules/TheDesktopPosterButtons'
-import Description from '@/components/molecules/Description'
+import Description from '@/components/molecules/Description/Description'
 import PreRender from '@/components/atoms/PreRender'
 import BaseBlurHover from '@/components/atoms/BaseBlurHover'
 
@@ -72,7 +72,8 @@ export default {
     return {
       descriptionActive: false,
       animation: false,
-      slideDirection: ''
+      slideDirection: '',
+      closeAfterScroll: false
     }
   },
 
@@ -88,7 +89,6 @@ export default {
     ...mapActions(['buttonForwardOrBack', 'preDataChanger']),
 
     scrollDescription (event) {
-      event.preventDefault()
       this.descriptionActive = event.deltaY >= 1
     },
 
@@ -115,6 +115,8 @@ export default {
 }
 
 .HomeMain {
+  //background-color: red;
+  height: 81vh;
   padding-top: 60px;
   width: 100%;
   display: flex;

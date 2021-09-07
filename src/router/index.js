@@ -11,6 +11,7 @@ const routes = [
   {
     path: '/',
     component: DesktopLayout,
+    // there will be mobile layout too
     children: [
       {
         path: '/recommend',

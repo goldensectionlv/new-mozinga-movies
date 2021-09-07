@@ -18,8 +18,8 @@
         @movieClick="movieClick"
       >
         <BaseText
-          description-sub-header-text-two
-          style="margin-top: 12px;"
+          title-movie-name-for-card
+          style="margin-top: 12px"
         >
           {{ movie.name }}
         </BaseText>

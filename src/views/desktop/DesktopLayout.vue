@@ -5,7 +5,6 @@
     <section class="section">
       <transition
         name="slide"
-        mode="out-in"
       >
         <HomePage v-show="$route.path === '/'" />
       </transition>
@@ -77,20 +76,23 @@ export default {
     grid-template-columns: 1fr;
   }
   .main-left {
-    display: none !important;
+    //display: none !important;
+    position: absolute;
+    background-color: rgba(0,0,0,.6);
+    backdrop-filter: blur(30px);
+    border-radius: unset;
+    transform: translateY(-100%);
+    z-index: 3;
   }
 }
 
 .slide-enter-active {
-  transition: transform 600ms, opacity 600ms;
+  transition: ease-out, opacity 600ms;
 }
 
 .slide-enter {
-  transform: translate(15%, 0);
+  //transform: translateX(15%);
   opacity: 0;
 }
 
-.slide-leave-to {
-  transform: translate(0, 0);
-}
 </style>

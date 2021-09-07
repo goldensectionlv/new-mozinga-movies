@@ -17,7 +17,7 @@
         icon-name="head-heart-outline"
         mt30
         :active="$route.path === '/recommend'"
-        @click.native="$router.push('/recommend').catch(() => {})"
+        @click.native="clickRecommend"
       />
 
       <BaseNavBarButton
@@ -50,10 +50,14 @@ export default {
     BaseNavBarButton
   },
   methods: {
-    ...mapActions(['getWatchlist']),
+    ...mapActions(['getWatchlist', 'getRecommendList']),
     clickWatchlist () {
       this.$router.push('/watchlist').catch(() => {})
       // this.getWatchlist('full')
+    },
+    async clickRecommend () {
+      this.$router.push('/recommend').catch(() => {})
+      await this.getRecommendList()
     }
   }
 }

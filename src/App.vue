@@ -1,7 +1,9 @@
 <template>
   <div>
     <PreLoader v-if="!initialAnimation" />
-    <transition name="fade">
+    <transition
+      name="fade"
+    >
       <v-app
         v-show="initialAnimation"
         class="my-app"
@@ -42,12 +44,17 @@ export default {
   },
   async mounted () {
     await this.createdHome()
-    this.initialAnimation = true
+    if (this.$route.path === '/') this.initialAnimation = true
     await this.getWatchlist('full')
+    if (this.$route.path === '/watchlist') this.initialAnimation = true
     await this.getWatchedList('full')
+    if (this.$route.path === '/watched') this.initialAnimation = true
+    await this.getRecommendList()
+    if (this.$route.path === '/recommend') this.initialAnimation = true
+    this.initialAnimation = true
   },
   methods: {
-    ...mapActions(['createdHome', 'getWatchlist', 'getWatchedList'])
+    ...mapActions(['createdHome', 'getWatchlist', 'getWatchedList', 'getRecommendList'])
   }
 }
 </script>
