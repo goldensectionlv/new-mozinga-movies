@@ -13,6 +13,9 @@ export default {
     getWatchlist: (state, data) => {
       state.watchlistFull = data
       console.log('watchlist loaded')
+    },
+    clearWatchlist: state => {
+      state.watchlistFull = []
     }
   },
 
@@ -20,6 +23,7 @@ export default {
     getWatchlist: async ({ commit }, size = 'full') => {
       const response = await apiRequests.getWatchlist(size)
       commit('getWatchlist', response.response.data)
-    }
+    },
+    clearWatchlist: ({ commit }) => commit('clearWatchlist')
   }
 }

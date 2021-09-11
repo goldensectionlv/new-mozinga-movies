@@ -87,6 +87,7 @@ export default {
     font-weight: 800;
     user-select: none;
     color: #00FFFF;
+    cursor: pointer;
   }
 }
 

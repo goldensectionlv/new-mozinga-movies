@@ -11,6 +11,9 @@ export default {
     getWatchedList: (state, response) => {
       state.watchedListFull = response
       console.log('watched list loaded')
+    },
+    clearWatchedList: state => {
+      state.watchedListFull = []
     }
 
   },
@@ -18,6 +21,7 @@ export default {
     getWatchedList: async ({ commit }, listType = 'full') => {
       const response = await apiRequests.getWatchedList(listType)
       commit('getWatchedList', response.response.data)
-    }
+    },
+    clearWatchedList: ({ commit }) => commit('clearWatchedList')
   }
 }

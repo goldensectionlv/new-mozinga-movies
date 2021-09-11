@@ -54,5 +54,6 @@ export default {
   justify-content: center;
   cursor: pointer;
   height: 130px;
+  user-select: none;
 }
 </style>

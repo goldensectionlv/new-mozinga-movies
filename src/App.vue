@@ -52,9 +52,16 @@ export default {
     await this.getRecommendList()
     if (this.$route.path === '/recommend') this.initialAnimation = true
     this.initialAnimation = true
+    this.requestUsername()
   },
   methods: {
-    ...mapActions(['createdHome', 'getWatchlist', 'getWatchedList', 'getRecommendList'])
+    ...mapActions([
+      'createdHome',
+      'getWatchlist',
+      'getWatchedList',
+      'getRecommendList',
+      'requestUsername'
+    ])
   }
 }
 </script>

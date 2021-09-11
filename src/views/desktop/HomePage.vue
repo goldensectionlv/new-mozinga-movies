@@ -51,8 +51,8 @@
 import { mapGetters, mapActions } from 'vuex'
 import BasePoster from '@/components/atoms/BasePoster'
 import BaseArrowButton from '@/components/atoms/buttons/BaseArrowButton'
-import TheDesktopPosterButtons from '@/components/molecules/TheDesktopPosterButtons'
-import Description from '@/components/molecules/Description/Description'
+import TheDesktopPosterButtons from '@/components/TheDesktopPosterButtons'
+import Description from '@/components/Description/Description'
 import PreRender from '@/components/atoms/PreRender'
 import BaseBlurHover from '@/components/atoms/BaseBlurHover'
 

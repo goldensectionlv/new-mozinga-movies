@@ -123,5 +123,23 @@ export default {
       })
       return { response }
     }
+  },
+  async login (username, password) {
+    const response = await axios.post(mainUrl + 'api_login_view', {
+      username: username,
+      password: password
+    }, {
+      withCredentials: true,
+      crossDomain: true,
+      headers: { device: cookie.getCookie('device') }
+    })
+    return { response }
+  },
+  async deleteAnonymous () {
+    await axios.get(mainUrl + 'api_delete_anonymous', {
+      withCredentials: true,
+      crossDomain: true,
+      headers: { device: cookie.getCookie('device') }
+    })
   }
 }

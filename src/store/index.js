@@ -4,6 +4,7 @@ import home from '@/store/home'
 import watchlist from '@/store/watchlist'
 import watched from '@/store/watched'
 import recommend from '@/store/recommend'
+import account from '@/store/account'
 
 Vue.use(Vuex)
 
@@ -18,7 +19,8 @@ export default new Vuex.Store({
     home,
     watchlist,
     watched,
-    recommend
+    recommend,
+    account
 
   }
 })

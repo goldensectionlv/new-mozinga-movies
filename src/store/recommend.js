@@ -9,12 +9,16 @@ export default {
     getRecommendList: (state, recommendList) => {
       state.recommendList = recommendList
       console.log('recommend loaded')
+    },
+    clearRecommendList: state => {
+      state.recommendList = []
     }
   },
   actions: {
     getRecommendList: async ({ commit }) => {
       const response = await apiRequests.recommendSliced()
       commit('getRecommendList', response.response.data)
-    }
+    },
+    clearRecommendList: ({ commit }) => commit('clearRecommendList')
   }
 }

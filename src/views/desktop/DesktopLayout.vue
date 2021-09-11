@@ -1,6 +1,7 @@
 <template>
   <main class="main">
     <DesktopSidebar class="main-left" />
+    <account v-if="accountModalShow" />
 
     <section class="section">
       <transition
@@ -40,6 +41,8 @@ import HomePage from '@/views/desktop/HomePage'
 import WatchlistPage from '@/views/desktop/WatchlistPage'
 import WatchedPage from '@/views/desktop/WatchedPage'
 import RecommendPage from '@/views/desktop/RecommendPage'
+import account from '@/components/account/account'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'DesktopLayout',
@@ -48,8 +51,10 @@ export default {
     HomePage,
     WatchlistPage,
     WatchedPage,
-    RecommendPage
-  }
+    RecommendPage,
+    account
+  },
+  computed: mapGetters(['accountModalShow'])
 }
 </script>
 

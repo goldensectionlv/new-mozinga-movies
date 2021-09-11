@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import DescriptionHeader from '@/components/molecules/Description/DescriptionHeader'
-import DescriptionBody from '@/components/molecules/Description/DescriptionBody/DescriptionBody'
+import DescriptionHeader from '@/components/Description/DescriptionHeader'
+import DescriptionBody from '@/components/Description/DescriptionBody/DescriptionBody'
 
 export default {
   name: 'Description',

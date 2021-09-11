@@ -38,8 +38,8 @@
 <script>
 import BaseSingleButton from '@/components/atoms/buttons/BaseSingleButton'
 import BaseText from '@/components/atoms/BaseText'
-import DescriptionBodyDetails from '@/components/molecules/Description/DescriptionBody/DescriptionBodyDetails'
-import DescriptionTrailer from '@/components/molecules/Description/DescriptionBody/DescriptionBodyTrailer'
+import DescriptionBodyDetails from '@/components/Description/DescriptionBody/DescriptionBodyDetails'
+import DescriptionTrailer from '@/components/Description/DescriptionBody/DescriptionBodyTrailer'
 export default {
   name: 'DescriptionBody',
   components: {

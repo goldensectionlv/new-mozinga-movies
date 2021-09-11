@@ -2,8 +2,9 @@
   <v-btn
     class="nav-btn text-capitalize white--text"
     :class="{'mt30': mt30}"
-    :color="active ? '#FF007A' : 'rgba(0,255,255,.60%)'"
-    left
+    :color="active ? activeColor : defaultColor"
+    :style="{justifyContent: justifyContent}"
+    :rounded="rounded"
     block
     elevation="0"
   >
@@ -33,6 +34,22 @@ export default {
     mt30: {
       type: Boolean,
       default: false
+    },
+    justifyContent: {
+      type: String,
+      default: 'flex-start'
+    },
+    defaultColor: {
+      type: String,
+      default: 'rgba(0,255,255,.60%)'
+    },
+    activeColor: {
+      type: String,
+      default: '#FF007A'
+    },
+    rounded: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -41,7 +58,6 @@ export default {
 <style lang="scss" scoped>
 .nav-btn {
   width: 100%;
-  justify-content: flex-start;
   padding: 30px 16px !important;
   font-weight: bold;
   letter-spacing: 0;
