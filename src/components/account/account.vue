@@ -25,7 +25,11 @@
         @login="login"
       />
 
-      <registerMenu v-if="registerActive && !username" />
+      <registerMenu
+        v-if="registerActive && !username"
+        @closeRegister="clickCloseButton"
+        @successRegister="clickCloseButton"
+      />
     </div>
   </div>
 </template>

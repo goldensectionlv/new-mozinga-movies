@@ -9,7 +9,6 @@
         dark
         label="Имя пользователя"
         required
-        class="mt30"
       />
       <v-text-field
         v-model="password"

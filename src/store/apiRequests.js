@@ -141,5 +141,18 @@ export default {
       crossDomain: true,
       headers: { device: cookie.getCookie('device') }
     })
+  },
+  async register (username, email, password, password2) {
+    const response = await axios.post(mainUrl + 'api_registration_view', {
+      username: username,
+      email: email,
+      password: password,
+      password2: password2
+    }, {
+      withCredentials: true,
+      crossDomain: true,
+      headers: { device: cookie.getCookie('device') }
+    })
+    return { response }
   }
 }
