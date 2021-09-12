@@ -1,28 +1,21 @@
 <template>
   <div class="unauthorizedModal">
-    <BaseNavBarButton
+    <BaseFormButton
       btn-text="зарегаться"
       icon-name="account-plus"
-      justify-content="center"
-      default-color="rgba(0,255,255,.15)"
-      rounded
       @click.native="clickRegisterButton"
     />
-
-    <BaseNavBarButton
+    <BaseFormButton
       btn-text="Войти"
       icon-name="login-variant"
-      justify-content="center"
-      default-color="rgba(0,255,255,.15)"
-      rounded
-      mt30
+      margin-top
       @click.native="clickLoginButton"
     />
 
     <v-btn
       fab
       dark
-      style="margin-top: 30px;"
+      style="margin-top: 15px;"
       color="rgba(0,255,255,.60%)"
       @click="clickCloseButton"
     >
@@ -32,12 +25,12 @@
 </template>
 
 <script>
-import BaseNavBarButton from '@/components/atoms/buttons/BaseNavBarButton'
+import BaseFormButton from '@/components/atoms/buttons/BaseFormButton'
 
 export default {
   name: 'UnauthorizedMenu',
   components: {
-    BaseNavBarButton
+    BaseFormButton
   },
   methods: {
     clickRegisterButton () {

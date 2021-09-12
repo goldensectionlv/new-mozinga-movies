@@ -120,9 +120,9 @@ export default {
   z-index: 5;
 }
 .accountModal {
-  width: 300px;
+  width: 360px;
   max-width: 90%;
-  padding: 30px;
+  padding: 45px;
   border-radius: 21px;
   background-color: rgba(0,0,0,.9);
 }

@@ -5,27 +5,27 @@
       disabled
       text
       dark
+      style="color:white !important;"
     >
       <span>Я есть <br> <span class="font-weight-bold">{{ username }}</span></span>
     </v-btn>
 
-    <BaseNavBarButton
+    <BaseFormButton
       btn-text="Выйти"
-      rounded
-      justify-content="center"
-      mt30
-      default-color="rgba(0,255,255,.3)"
+      margin-top
       @click.native="clickLogout"
     />
   </div>
 </template>
 
 <script>
-import BaseNavBarButton from '@/components/atoms/buttons/BaseNavBarButton'
+import BaseFormButton from '@/components/atoms/buttons/BaseFormButton'
+
 export default {
   name: 'AuthorizedMenu',
   components: {
-    BaseNavBarButton
+
+    BaseFormButton
   },
   props: {
     username: {

@@ -43,6 +43,7 @@ export default {
     document.cookie = 'device=' + device + ';domain=;path=/'
   },
   async mounted () {
+    this.requestUsername()
     await this.createdHome()
     if (this.$route.path === '/') this.initialAnimation = true
     await this.getWatchlist('full')
@@ -52,7 +53,6 @@ export default {
     await this.getRecommendList()
     if (this.$route.path === '/recommend') this.initialAnimation = true
     this.initialAnimation = true
-    this.requestUsername()
   },
   methods: {
     ...mapActions([

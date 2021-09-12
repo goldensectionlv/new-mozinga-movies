@@ -20,12 +20,9 @@
         class="mt15"
       />
 
-      <BaseNavBarButton
+      <BaseFormButton
         btn-text="Войти"
-        rounded
-        justify-content="center"
-        default-color="rgba(0,255,255,.3)"
-        class="mt15"
+        margin-top
         @click.native="login(username, password)"
       />
       <p
@@ -39,11 +36,11 @@
 </template>
 
 <script>
-import BaseNavBarButton from '@/components/atoms/buttons/BaseNavBarButton'
+import BaseFormButton from '@/components/atoms/buttons/BaseFormButton'
 export default {
   name: 'LoginMenu',
   components: {
-    BaseNavBarButton
+    BaseFormButton
   },
   props: {
     error: {
