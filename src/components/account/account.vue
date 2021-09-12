@@ -30,6 +30,16 @@
         @closeRegister="clickCloseButton"
         @successRegister="clickCloseButton"
       />
+
+      <v-btn
+        fab
+        dark
+        style="margin-top: 15px;"
+        color="rgba(0,255,255,.60%)"
+        @click="clickCloseButton"
+      >
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
     </div>
   </div>
 </template>
@@ -124,6 +134,9 @@ export default {
   z-index: 5;
 }
 .accountModal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 360px;
   max-width: 90%;
   padding: 45px;

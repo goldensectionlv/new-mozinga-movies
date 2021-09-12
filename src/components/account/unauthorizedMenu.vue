@@ -11,16 +11,6 @@
       margin-top
       @click.native="clickLoginButton"
     />
-
-    <v-btn
-      fab
-      dark
-      style="margin-top: 15px;"
-      color="rgba(0,255,255,.60%)"
-      @click="clickCloseButton"
-    >
-      <v-icon>mdi-close</v-icon>
-    </v-btn>
   </div>
 </template>
 
@@ -38,9 +28,6 @@ export default {
     },
     clickLoginButton () {
       this.$emit('clickLoginButton')
-    },
-    clickCloseButton () {
-      this.$emit('clickCloseButton')
     }
   }
 }
@@ -48,6 +35,7 @@ export default {
 
 <style scoped>
 .unauthorizedModal {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

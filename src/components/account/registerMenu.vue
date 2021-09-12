@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="registerMenu">
     <v-form
       ref="registerForm"
       method="post"
@@ -47,16 +47,6 @@
         @click.prevent.native="register(username, email, password, password2)"
       />
 
-      <v-btn
-        fab
-        dark
-        style="margin-top: 15px"
-        color="rgba(0,255,255,.60%)"
-        @click="$emit('closeRegister')"
-      >
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-      <br>
       <p
         v-if="password2 && password2 !== password"
         class="white--text"
@@ -135,6 +125,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.registerMenu {
+  width: 100%;
+}
+
 .registerForm {
   display: flex;
   flex-direction: column;

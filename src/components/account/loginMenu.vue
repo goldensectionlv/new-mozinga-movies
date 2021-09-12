@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="loginMenu">
     <v-form
       method="post"
       @submit.prevent.native="login(username, password)"
@@ -62,6 +62,9 @@ export default {
 </script>
 
 <style scoped>
+.loginMenu {
+  width: 100%;
+}
 .mt15 {
   margin-top: 15px;
 }
