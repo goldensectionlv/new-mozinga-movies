@@ -1,13 +1,19 @@
 <template>
   <div class="container">
     <div class="item">
-      <v-img :src="previous_movie.thumb_url" />
+      <img
+        alt="..."
+        :src="previous_movie.thumb_url"
+      >
     </div>
 
     <div
       class="item"
     >
-      <v-img :src="next_movie.thumb_url" />
+      <img
+        alt="..."
+        :src="next_movie.thumb_url"
+      >
     </div>
   </div>
 </template>
@@ -25,7 +31,7 @@ export default {
 <style scoped>
 .container {
   position: absolute;
-  display: none
+  visibility: hidden;
 }
 .item {
   width: 10%;

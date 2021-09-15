@@ -25,6 +25,7 @@
           :key="movie.id"
           :img-url="movie.thumb_url"
           :alt-text="movie.name"
+          :backdrop="movie.backdrop"
         />
       </div>
     </div>
@@ -77,7 +78,7 @@ export default {
 }
 
 .recommendSubtitle {
-  margin-bottom: 9px;
+  margin-bottom: 15px;
   &__left {
     font-weight: 800;
     user-select: none;

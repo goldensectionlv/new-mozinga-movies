@@ -1,7 +1,8 @@
 <template>
   <div
     class="zoom"
-    @click="$emit('movieClick')"
+    @click="clickMovieCard"
+    @mouseenter="setBackdropForMoviePage(backdrop)"
   >
     <div style="width: 100%; padding-bottom: 150%; position: relative">
       <div style="width: 100%; height: 100%; position: absolute">
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'BaseAspectMovieCard',
   props: {
@@ -28,6 +30,18 @@ export default {
     altText: {
       type: String,
       default: 'img'
+    },
+    backdrop: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    ...mapActions(['toggleMoviePage', 'setBackdropForMoviePage']),
+    clickMovieCard () {
+      console.log('click from card')
+      this.setBackdropForMoviePage(this.backdrop)
+      this.toggleMoviePage()
     }
   }
 }

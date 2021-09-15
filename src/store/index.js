@@ -5,6 +5,7 @@ import watchlist from '@/store/watchlist'
 import watched from '@/store/watched'
 import recommend from '@/store/recommend'
 import account from '@/store/account'
+import moviePage from '@/store/moviePage'
 
 Vue.use(Vuex)
 
@@ -20,7 +21,8 @@ export default new Vuex.Store({
     watchlist,
     watched,
     recommend,
-    account
+    account,
+    moviePage
 
   }
 })

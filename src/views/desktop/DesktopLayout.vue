@@ -1,7 +1,14 @@
 <template>
   <main class="main">
     <DesktopSidebar class="main-left" />
+
     <account v-if="accountModalShow" />
+
+    <MoviePageBackdropPreRender />
+
+    <MoviePage
+      :activation="moviePageActive"
+    />
 
     <section class="section">
       <transition
@@ -42,6 +49,8 @@ import WatchlistPage from '@/views/desktop/WatchlistPage'
 import WatchedPage from '@/views/desktop/WatchedPage'
 import RecommendPage from '@/views/desktop/RecommendPage'
 import account from '@/components/account/account'
+import MoviePage from '@/views/desktop/MoviePage'
+import MoviePageBackdropPreRender from '@/components/atoms/MoviePageBackdropPreRender'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -52,9 +61,11 @@ export default {
     WatchlistPage,
     WatchedPage,
     RecommendPage,
-    account
+    account,
+    MoviePage,
+    MoviePageBackdropPreRender
   },
-  computed: mapGetters(['accountModalShow'])
+  computed: mapGetters(['accountModalShow', 'moviePageActive'])
 }
 </script>
 

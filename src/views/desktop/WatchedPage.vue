@@ -15,7 +15,7 @@
         :key="movie.id"
         :img-url="movie.thumb_url"
         :alt-text="movie.name"
-        @movieClick="movieClick"
+        :backdrop="movie.backdrop"
       >
         <BaseText
           title-movie-name-for-card

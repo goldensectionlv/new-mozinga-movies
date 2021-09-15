@@ -15,7 +15,7 @@
         :key="movie.id"
         :img-url="movie.thumb_url"
         :alt-text="movie.name"
-        @movieClick="movieClick"
+        :backdrop="movie.backdrop"
       >
         <BaseText
           title-movie-name-for-card
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import BaseText from '@/components/atoms/BaseText'
 import BaseAspectMovieCard from '@/components/atoms/BaseAspectMovieCard'
 
@@ -45,8 +45,9 @@ export default {
     })
   },
   methods: {
+    ...mapActions(['toggleMoviePage']),
     movieClick () {
-      console.log('movieClick')
+      this.toggleMoviePage()
     }
   }
 }
