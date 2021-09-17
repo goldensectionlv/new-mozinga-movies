@@ -28,7 +28,7 @@ export default {
 .action-button {
   border-radius: 15px;
   font-weight: 800;
-  font-size: 9pt;
+  font-size: calc(9px + 3 * (100vw/1280));
   letter-spacing: 0;
   color: white;
 }

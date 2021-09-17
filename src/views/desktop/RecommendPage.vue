@@ -78,6 +78,7 @@ export default {
 }
 
 .recommendSubtitle {
+  font-size: calc(12px + 4 * (100vw/1280));
   margin-bottom: 15px;
   &__left {
     font-weight: 800;

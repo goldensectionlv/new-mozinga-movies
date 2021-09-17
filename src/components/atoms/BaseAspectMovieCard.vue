@@ -14,14 +14,21 @@
       </div>
     </div>
 
-    <slot />
+    <BaseText
+      title-movie-name-for-card
+      style="margin-top: 12px; cursor: pointer"
+    >
+      <slot />
+    </BaseText>
   </div>
 </template>
 
 <script>
+import BaseText from '@/components/atoms/BaseText'
 import { mapActions } from 'vuex'
 export default {
   name: 'BaseAspectMovieCard',
+  components: { BaseText },
   props: {
     imgUrl: {
       type: String,
@@ -39,7 +46,6 @@ export default {
   methods: {
     ...mapActions(['toggleMoviePage', 'setBackdropForMoviePage']),
     clickMovieCard () {
-      console.log('click from card')
       this.setBackdropForMoviePage(this.backdrop)
       this.toggleMoviePage()
     }

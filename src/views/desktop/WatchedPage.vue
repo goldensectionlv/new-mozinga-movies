@@ -17,12 +17,7 @@
         :alt-text="movie.name"
         :backdrop="movie.backdrop"
       >
-        <BaseText
-          title-movie-name-for-card
-          style="margin-top: 12px;"
-        >
-          {{ movie.name }}
-        </BaseText>
+        {{ movie.name }}
       </BaseAspectMovieCard>
     </div>
   </div>
@@ -68,7 +63,7 @@ export default {
 
 .grid {
   display: grid;
-  grid-row-gap: 30px;
+  grid-row-gap: 21px;
   grid-template-columns: repeat(auto-fill, 23%);
   justify-content: space-between;
 }
@@ -76,7 +71,6 @@ export default {
 @media (max-width: 1324px) {
   .grid {
     grid-template-columns: repeat(auto-fill, 31%);
-    grid-row-gap: 42px;
   }
   .pageContainer {
     padding: 45px 30px;
@@ -86,7 +80,6 @@ export default {
 @media (max-width: 660px) {
   .grid {
     grid-template-columns: repeat(auto-fill, 48%);
-    grid-row-gap: 30px;
   }
   .pageContainer {
     padding: 30px 30px;
