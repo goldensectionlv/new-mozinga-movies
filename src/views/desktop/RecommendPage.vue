@@ -16,7 +16,12 @@
     >
       <div class="recommendSubtitle">
         <span class="recommendSubtitle__left">Похожие на </span>
-        <span class="recommendSubtitle__right">{{ recommend.based_on.name }}</span>
+        <span
+          class="recommendSubtitle__right"
+          @click="clickMovieCard(recommend.based_on.backdrop)"
+        >
+          {{ recommend.based_on.name }}
+        </span>
       </div>
 
       <div class="grid">
@@ -34,28 +39,34 @@
 
 <script>
 import BaseText from '@/components/atoms/BaseText'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import BaseAspectMovieCard from '@/components/atoms/BaseAspectMovieCard'
+
 export default {
   name: 'RecommendPage',
+
   components: {
     BaseText,
     BaseAspectMovieCard
   },
 
-  data () {
-    return {
-    }
-  },
   computed: {
     ...mapGetters(['recommendList'])
   },
-  mounted () {
+
+  methods: {
+    ...mapActions(['setBackdropForMoviePage', 'toggleMoviePage']),
+
+    clickMovieCard (backdrop) {
+      this.setBackdropForMoviePage(backdrop)
+      this.toggleMoviePage()
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
 .pageContainer {
   background-color: rgba(0,255,255,0.1);
   width: 100%;
@@ -66,6 +77,7 @@ export default {
   position: absolute;
   overflow-y: scroll;
 }
+
 .grid {
   width: 100%;
   display: grid;
