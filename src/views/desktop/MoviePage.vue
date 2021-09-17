@@ -8,6 +8,15 @@
       class="moviePage"
     >
       <div class="moviePageContainer">
+        <v-btn
+          fab
+          dark
+          elevation="0"
+          style="margin: 15px 15px 0 0; position: absolute; right: 0"
+          color="rgba(0,0,0,.6)"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
         <div
           :key="backdrop"
           class="moviePageBackdrop"
@@ -28,6 +37,8 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'MoviePage',
+  components: {
+  },
   props: {
     activation: {
       type: Boolean,
@@ -78,6 +89,14 @@ export default {
   width: 80%;
   height: 100%;
   background-color: rgba(0, 0, 0, .6);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .moviePageBody {
+    width: 100%;
+  }
 }
 
 .slideMoviePage-enter-active, .slideMoviePage-leave-active {

@@ -35,7 +35,7 @@
         fab
         dark
         style="margin-top: 15px;"
-        color="rgba(0,255,255,.60%)"
+        color="rgba(255,255,255,.15)"
         @click="clickCloseButton"
       >
         <v-icon>mdi-close</v-icon>

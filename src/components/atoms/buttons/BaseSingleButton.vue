@@ -2,9 +2,11 @@
   <v-btn
     class="action-button text-capitalize"
     elevation="0"
-    :color="active ? 'rgba(0,255,255,.6)' : 'rgba(196,196,196, 0.06)'"
+    :color="active ? activeColor : defaultColor"
+    :fab="fab"
   >
     {{ buttonName }}
+    <slot />
   </v-btn>
 </template>
 
@@ -19,6 +21,18 @@ export default {
     buttonName: {
       type: String,
       default: ''
+    },
+    defaultColor: {
+      type: String,
+      default: 'rgba(196,196,196, 0.06)'
+    },
+    activeColor: {
+      type: String,
+      default: 'rgba(0,255,255,.6)'
+    },
+    fab: {
+      type: Boolean,
+      default: false
     }
   }
 }
