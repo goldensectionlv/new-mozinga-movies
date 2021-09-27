@@ -110,6 +110,10 @@ export default {
   background-color: rgba(0, 0, 0, .6);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 900;
 }
 
 @media (max-width: 900px) {

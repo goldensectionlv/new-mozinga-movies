@@ -41,6 +41,9 @@ export default {
 
     getMovie: (state, movieModal) => {
       state.movieModal = movieModal.movie
+    },
+    clearMovieModalData: state => {
+      state.movieModal = {}
     }
   },
   actions: {
@@ -49,6 +52,7 @@ export default {
     setBackdropForMoviePage: ({ commit }, backdrop = '') => commit('setBackdropForMoviePage', backdrop),
 
     getMovie: async ({ commit }, id) => {
+      commit('clearMovieModalData')
       const response = await apiRequests.getMovie(id)
       commit('getMovie', response.response.data)
     }
