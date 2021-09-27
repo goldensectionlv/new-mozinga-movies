@@ -18,7 +18,7 @@
         <span class="recommendSubtitle__left">Похожие на </span>
         <span
           class="recommendSubtitle__right"
-          @click="clickMovieCard(recommend.based_on.backdrop)"
+          @click="clickMovieCard(recommend.based_on.backdrop, recommend.based_on.id)"
         >
           {{ recommend.based_on.name }}
         </span>
@@ -56,11 +56,13 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setBackdropForMoviePage', 'toggleMoviePage']),
+    ...mapActions(['setBackdropForMoviePage', 'toggleMoviePage', 'getMovie']),
 
-    clickMovieCard (backdrop) {
+    clickMovieCard (backdrop, movieId) {
+      this.$router.push('/movie/' + movieId)
       this.setBackdropForMoviePage(backdrop)
       this.toggleMoviePage()
+      this.getMovie(this.movieId)
     }
   }
 }

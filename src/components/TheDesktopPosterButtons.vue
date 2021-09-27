@@ -54,13 +54,14 @@ export default {
     ...mapGetters(['movieButtonsData'])
   },
   methods: {
-    ...mapActions(['likeOrDislike', 'adToWatchedOrWatchlist', 'getWatchlist', 'getWatchedList']),
+    ...mapActions(['likeOrDislike', 'addToWatchedOrWatchlist', 'getWatchlist', 'getWatchedList', 'getRecommendList']),
 
     async likeOrDislikeClick (movieId, action) {
       await this.likeOrDislike({ movie_id: movieId, action })
+      await this.getRecommendList()
     },
     async watchedOrWatchlistClick (movieId, action) {
-      await this.adToWatchedOrWatchlist({ movie_id: movieId, action })
+      await this.addToWatchedOrWatchlist({ movie_id: movieId, action })
       await this.getWatchlist('full')
       await this.getWatchedList('full')
     }

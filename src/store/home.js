@@ -78,7 +78,7 @@ export default {
       state.movieButtonsData.total_likes = response.total_likes
       state.movieButtonsData.total_dislikes = response.total_dislikes
     },
-    adToWatchedOrWatchlist (state, response) {
+    addToWatchedOrWatchlist (state, response) {
       state.movieButtonsData.watched = response.watched
       state.movieButtonsData.watchlist = response.watchlist
     }
@@ -101,9 +101,9 @@ export default {
       console.log(`btn ${args.action} pressed`)
     },
 
-    adToWatchedOrWatchlist: async ({ commit }, args = { movie_id: null, action: 'watchlist/watched' }) => {
+    addToWatchedOrWatchlist: async ({ commit }, args = { movie_id: null, action: 'watchlist/watched' }) => {
       const response = await apiRequests.adToWatchedOrWatchlist(args)
-      commit('adToWatchedOrWatchlist', response.response.data)
+      commit('addToWatchedOrWatchlist', response.response.data)
       console.log(`btn ${args.action} pressed`)
     }
   },

@@ -63,18 +63,14 @@ export default {
   computed: mapGetters(['username']),
   methods: {
     ...mapActions([
-      'getWatchlist',
-      'getRecommendList',
       'toggleAccountModal'
     ]),
 
     clickWatchlist () {
       this.$router.push('/watchlist').catch(() => {})
-      // this.getWatchlist('full')
     },
     async clickRecommend () {
       this.$router.push('/recommend').catch(() => {})
-      await this.getRecommendList()
     },
     clickAccount () {
       this.toggleAccountModal()
