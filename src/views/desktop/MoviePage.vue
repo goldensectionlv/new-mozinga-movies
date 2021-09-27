@@ -24,9 +24,11 @@
         />
 
         <div
-          v-click-outside="toggleMoviePage"
-          class="moviePageBody"
-        />
+          v-click-outside="clickClose"
+          class="moviePageBody white--text"
+        >
+          {{ movieModal.name }} {{ prevRoute }}
+        </div>
       </div>
     </div>
   </transition>
@@ -45,11 +47,24 @@ export default {
       default: false
     }
   },
+  data () {
+    return {
+      prevRoute: null
+    }
+  },
   computed: {
-    ...mapGetters(['backdrop'])
+    ...mapGetters(['backdrop', 'movieModal'])
   },
   methods: {
-    ...mapActions(['toggleMoviePage'])
+    ...mapActions(['toggleMoviePage']),
+    clickClose () {
+      if (window.history.length > 2) {
+        this.$router.go(-1)
+      } else {
+        this.$router.push('/')
+      }
+      this.toggleMoviePage()
+    }
   }
 }
 </script>
@@ -81,11 +96,15 @@ export default {
   z-index: -1;
   width: 100%;
   height: 100%;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
   background-position: center;
   background-size: cover;
 }
 
 .moviePageBody {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
   width: 80%;
   height: 100%;
   background-color: rgba(0, 0, 0, .6);

@@ -16,6 +16,7 @@
         :img-url="movie.thumb_url"
         :alt-text="movie.name"
         :backdrop="movie.backdrop"
+        :movie-id="movie.id"
       >
         {{ movie.name }}
       </BaseAspectMovieCard>
@@ -40,10 +41,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['toggleMoviePage']),
-    movieClick () {
-      this.toggleMoviePage()
-    }
+    ...mapActions(['toggleMoviePage'])
   }
 }
 </script>

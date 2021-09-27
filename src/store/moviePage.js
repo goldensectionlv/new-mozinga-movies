@@ -1,11 +1,34 @@
+import apiRequests from '@/store/apiRequests'
+
 export default {
   state: {
     moviePageActive: false,
-    backdrop: ''
+    backdrop: '',
+    movieModal: {
+      name: '',
+      name_origin: '',
+      year: '',
+      country: '',
+      thumb_url: '',
+      genres: '',
+      description: '',
+      trailer: '',
+      director: [],
+      actors: []
+    },
+    movieModalButtonsData: {
+      like: false,
+      dislike: false,
+      watched: false,
+      watchlist: false,
+      total_likes: 0,
+      total_dislikes: 0
+    }
   },
   getters: {
     moviePageActive: state => state.moviePageActive,
-    backdrop: state => state.backdrop
+    backdrop: state => state.backdrop,
+    movieModal: state => state.movieModal
   },
   mutations: {
     toggleMoviePage: state => {
@@ -14,10 +37,20 @@ export default {
     },
     setBackdropForMoviePage: (state, backdrop) => {
       state.backdrop = backdrop
+    },
+
+    getMovie: (state, movieModal) => {
+      state.movieModal = movieModal.movie
     }
   },
   actions: {
     toggleMoviePage: ({ commit }) => commit('toggleMoviePage'),
-    setBackdropForMoviePage: ({ commit }, backdrop = '') => commit('setBackdropForMoviePage', backdrop)
+
+    setBackdropForMoviePage: ({ commit }, backdrop = '') => commit('setBackdropForMoviePage', backdrop),
+
+    getMovie: async ({ commit }, id) => {
+      const response = await apiRequests.getMovie(id)
+      commit('getMovie', response.response.data)
+    }
   }
 }

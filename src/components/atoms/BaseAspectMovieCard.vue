@@ -1,7 +1,7 @@
 <template>
   <div
     class="zoom"
-    @click="clickMovieCard"
+    @click="clickMovieCard()"
     @mouseenter="setBackdropForMoviePage(backdrop)"
   >
     <div style="width: 100%; padding-bottom: 150%; position: relative">
@@ -41,13 +41,19 @@ export default {
     backdrop: {
       type: String,
       default: ''
+    },
+    movieId: {
+      type: Number,
+      default: null
     }
   },
   methods: {
-    ...mapActions(['toggleMoviePage', 'setBackdropForMoviePage']),
+    ...mapActions(['toggleMoviePage', 'setBackdropForMoviePage', 'getMovie']),
     clickMovieCard () {
+      this.$router.push('/movie/' + this.movieId)
       this.setBackdropForMoviePage(this.backdrop)
       this.toggleMoviePage()
+      this.getMovie(this.movieId)
     }
   }
 }

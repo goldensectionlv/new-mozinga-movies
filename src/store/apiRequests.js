@@ -135,6 +135,7 @@ export default {
     })
     return { response }
   },
+
   async deleteAnonymous () {
     await axios.get(mainUrl + 'api_delete_anonymous', {
       withCredentials: true,
@@ -142,6 +143,7 @@ export default {
       headers: { device: cookie.getCookie('device') }
     })
   },
+
   async register (username, email, password, password2) {
     const response = await axios.post(mainUrl + 'api_registration_view', {
       username: username,
@@ -154,5 +156,22 @@ export default {
       headers: { device: cookie.getCookie('device') }
     })
     return { response }
+  },
+
+  async getMovie (id) {
+    const check = localStorage.getItem('token')
+    if (check !== null) {
+      const response = await axios.get(mainUrl + 'api_get_movie/' + id, {
+        headers: { Authorization: `token ${check}` }
+      })
+      return { response }
+    } else {
+      const response = await axios.get(mainUrl + 'api_get_movie/' + id, {
+        withCredentials: true,
+        crossDomain: true,
+        headers: { device: cookie.getCookie('device') }
+      })
+      return { response }
+    }
   }
 }

@@ -24,6 +24,9 @@ const routes = [
       {
         path: '/watchlist',
         component: WatchlistPage
+      },
+      {
+        path: '/movie/:id'
       }
     ]
   }

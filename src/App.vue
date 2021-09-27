@@ -35,7 +35,7 @@ export default {
     return { initialAnimation: false }
   },
   computed: {
-    ...mapGetters(['movie'])
+    ...mapGetters(['movie', 'movieModal'])
   },
   created () {
     let device = cookie.getCookie('device')
@@ -45,6 +45,11 @@ export default {
   async mounted () {
     this.requestUsername()
     await this.createdHome()
+    if (this.$route.fullPath.includes('/movie/') && this.$route.params.id) {
+      await this.getMovie(this.$route.params.id)
+      this.setBackdropForMoviePage(this.movieModal.backdrop)
+      this.toggleMoviePage()
+    }
     if (this.$route.path === '/') this.initialAnimation = true
     await this.getWatchlist('full')
     if (this.$route.path === '/watchlist') this.initialAnimation = true
@@ -60,7 +65,10 @@ export default {
       'getWatchlist',
       'getWatchedList',
       'getRecommendList',
-      'requestUsername'
+      'requestUsername',
+      'toggleMoviePage',
+      'setBackdropForMoviePage',
+      'getMovie'
     ])
   }
 }

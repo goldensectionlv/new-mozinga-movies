@@ -16,6 +16,7 @@
         :img-url="movie.thumb_url"
         :alt-text="movie.name"
         :backdrop="movie.backdrop"
+        :movie-id="movie.id"
       >
         {{ movie.name }}
       </BaseAspectMovieCard>
