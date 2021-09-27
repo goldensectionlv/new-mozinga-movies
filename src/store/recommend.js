@@ -8,6 +8,7 @@ export default {
   mutations: {
     getRecommendList: (state, recommendList) => {
       state.recommendList = recommendList
+      console.log(recommendList)
       console.log('recommend loaded')
     },
     clearRecommendList: state => {

@@ -62,7 +62,7 @@ export default {
       this.$router.push('/movie/' + movieId)
       this.setBackdropForMoviePage(backdrop)
       this.toggleMoviePage()
-      this.getMovie(this.movieId)
+      this.getMovie(movieId)
     }
   }
 }

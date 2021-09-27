@@ -17,6 +17,7 @@
         >
           <v-icon>mdi-close</v-icon>
         </v-btn>
+
         <div
           :key="backdrop"
           class="moviePageBackdrop"
