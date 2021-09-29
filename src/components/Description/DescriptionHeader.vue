@@ -1,17 +1,26 @@
 <template>
   <div
     class="description-header"
-    :class="{'header-active': descriptionActive}"
+    :class="{'header-active': descriptionActive, 'forModalFix': forModalFix}"
   >
-    <BaseText description-header-text>
+    <BaseText
+      :description-header-text="!bigText"
+      :description-header-text-big="bigText"
+    >
       {{ movieName }}
     </BaseText>
 
-    <BaseText description-sub-header-text-one>
+    <BaseText
+      :description-sub-header-text-one="!bigText"
+      :description-sub-header-text-one-big="bigText"
+    >
       {{ movieNameOrigin }}
     </BaseText>
 
-    <BaseText description-sub-header-text-two>
+    <BaseText
+      :description-sub-header-text-two="!bigText"
+      :description-sub-header-text-two-big="bigText"
+    >
       {{ movieYear }}
     </BaseText>
   </div>
@@ -38,8 +47,16 @@ export default {
       default: ''
     },
     movieYear: {
-      type: String,
-      default: ''
+      type: Number,
+      default: null
+    },
+    bigText: {
+      type: Boolean,
+      default: false
+    },
+    forModalFix: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -53,7 +70,12 @@ export default {
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
-  height: 130px;
+  min-height: 130px;
   user-select: none;
+}
+
+.forModalFix {
+  min-height: unset !important;
+  margin-bottom: 21px;
 }
 </style>

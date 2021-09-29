@@ -102,8 +102,8 @@ export default {
   }
 }
 
-.slide-enter-active {
-  transition: ease-out, opacity 600ms;
+.slide-enter-active, {
+  transition: ease-out, opacity 300ms;
 }
 
 .slide-enter {

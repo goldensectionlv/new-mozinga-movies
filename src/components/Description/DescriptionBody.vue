@@ -15,7 +15,10 @@
       v-if="tabs.textTab.active"
       class="textTab"
     >
-      <BaseText description-text-tab>
+      <BaseText
+        description-text-tab
+        :bold-text="boldText"
+      >
         {{ descriptionText }}
       </BaseText>
     </div>
@@ -38,8 +41,8 @@
 <script>
 import BaseSingleButton from '@/components/atoms/buttons/BaseSingleButton'
 import BaseText from '@/components/atoms/BaseText'
-import DescriptionBodyDetails from '@/components/Description/DescriptionBody/DescriptionBodyDetails'
-import DescriptionTrailer from '@/components/Description/DescriptionBody/DescriptionBodyTrailer'
+import DescriptionBodyDetails from '@/components/Description/DescriptionBodyComponents/DescriptionBodyDetails'
+import DescriptionTrailer from '@/components/Description/DescriptionBodyComponents/DescriptionBodyTrailer'
 export default {
   name: 'DescriptionBody',
   components: {
@@ -72,6 +75,10 @@ export default {
     trailerLink: {
       type: String,
       default: ''
+    },
+    boldText: {
+      type: Boolean,
+      default: false
     }
   },
   data () {

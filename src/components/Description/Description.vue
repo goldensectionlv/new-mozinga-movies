@@ -7,7 +7,7 @@
     <DescriptionHeader
       :movie-name="movie.name"
       :movie-name-origin="movie.name_origin"
-      :movie-year="String(movie.year)"
+      :movie-year="movie.year"
       :description-active="descriptionActive"
       @click.native="$emit('openDescription')"
     />
@@ -27,7 +27,7 @@
 
 <script>
 import DescriptionHeader from '@/components/Description/DescriptionHeader'
-import DescriptionBody from '@/components/Description/DescriptionBody/DescriptionBody'
+import DescriptionBody from '@/components/Description/DescriptionBody'
 
 export default {
   name: 'Description',

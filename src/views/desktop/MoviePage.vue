@@ -28,7 +28,23 @@
           v-click-outside="clickClose"
           class="moviePageBody white--text"
         >
-          {{ movieModal.name }} {{ prevRoute }}
+          <DescriptionHeader
+            :movie-name="movieModal.name"
+            :movie-name-origin="movieModal.name_origin"
+            :movie-year="movieModal.year"
+            big-text
+            for-modal-fix
+          />
+          <DescriptionBody
+            :description-text="movieModal.description"
+            :actors="movieModal.actors"
+            :country="movieModal.country"
+            :directors="movieModal.director"
+            :genres="movieModal.genres"
+            :trailer-link="movieModal.trailer"
+            bold-text
+          />
+          <!--          there will be buttons-->
         </div>
       </div>
     </div>
@@ -36,11 +52,15 @@
 </template>
 
 <script>
+import DescriptionHeader from '@/components/Description/DescriptionHeader'
+import DescriptionBody from '@/components/Description/DescriptionBody'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'MoviePage',
   components: {
+    DescriptionHeader,
+    DescriptionBody
   },
   props: {
     activation: {
@@ -111,10 +131,8 @@ export default {
   background-color: rgba(0, 0, 0, .6);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  font-weight: 900;
+  padding: 5vw 5vw 0 5vw;
+
 }
 
 @media (max-width: 900px) {
@@ -127,8 +145,10 @@ export default {
   transition: transform 300ms;
 }
 
-.slideMoviePage-enter, .slideMoviePage-leave-to {
+.slideMoviePage-enter, {
+  transform: translateY(96%);
+}
+.slideMoviePage-leave-to {
   transform: translateY(100%);
 }
-
 </style>

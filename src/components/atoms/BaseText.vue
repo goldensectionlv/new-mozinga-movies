@@ -3,14 +3,18 @@
     :class="{
       'logoText': logoText,
       'descriptionHeaderText': descriptionHeaderText,
+      'descriptionHeaderTextBig': descriptionHeaderTextBig,
       'descriptionSubHeaderTextOne': descriptionSubHeaderTextOne,
+      'descriptionSubHeaderTextOneBig': descriptionSubHeaderTextOneBig,
       'descriptionSubHeaderTextTwo': descriptionSubHeaderTextTwo,
+      'descriptionSubHeaderTextTwoBig': descriptionSubHeaderTextTwoBig,
       'likeOrDislikeText': likeOrDislikeText,
       'pageHeader': pageHeader,
       'titleMovieNameForCard': titleMovieNameForCard,
       'descriptionTextTab': descriptionTextTab,
       'detailsTabHeader': detailsTabHeader,
-      'detailsTabText': detailsTabText
+      'detailsTabText': detailsTabText,
+      'boldText': boldText
     }"
   >
     <slot />
@@ -60,6 +64,22 @@ export default {
     detailsTabText: {
       type: Boolean,
       default: false
+    },
+    descriptionHeaderTextBig: {
+      type: Boolean,
+      default: false
+    },
+    descriptionSubHeaderTextOneBig: {
+      type: Boolean,
+      default: false
+    },
+    descriptionSubHeaderTextTwoBig: {
+      type: Boolean,
+      default: false
+    },
+    boldText: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -73,8 +93,14 @@ export default {
 }
 
 .descriptionHeaderText {
-  //font-size: 24px;
   font-size: calc(21px + 1 * (100vw/1280));
+  font-weight: 900;
+  color: white;
+  letter-spacing: 0;
+}
+
+.descriptionHeaderTextBig {
+  font-size: calc(21px + 9 * (100vw/1280));
   font-weight: 900;
   color: white;
   letter-spacing: 0;
@@ -86,8 +112,21 @@ export default {
   color: #00FFFF;
 }
 
+.descriptionSubHeaderTextOneBig {
+  font-size: calc(15px + 3 * (100vw/1280));
+  font-weight: 700;
+  color: #00FFFF;
+}
+
 .descriptionSubHeaderTextTwo {
-  font-size: calc(15px + 1 * (100vw/1280));
+  font-size: calc(15px + 3 * (100vw/1280));
+  font-weight: 700;
+  color: white;
+  margin-top: 3px;
+}
+
+.descriptionSubHeaderTextTwoBig {
+  font-size: calc(15px + 3 * (100vw/1280));
   font-weight: 700;
   color: white;
   margin-top: 3px;
@@ -129,5 +168,9 @@ export default {
   font-weight: 700;
   color: white;
   margin-top: 3px;
+}
+
+.boldText {
+  font-weight: 600 !important;
 }
 </style>

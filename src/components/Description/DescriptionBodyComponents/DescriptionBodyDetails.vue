@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import DescriptionBodyDetailsAtom from '@/components/Description/DescriptionBody/DescriptionBodyDetailsAtom'
+import DescriptionBodyDetailsAtom from '@/components/Description/DescriptionBodyComponents/DescriptionBodyDetailsAtom'
 
 export default {
   name: 'DescriptionBodyDetails',
