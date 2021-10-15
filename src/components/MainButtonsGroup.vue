@@ -37,7 +37,6 @@
 <script>
 import BaseActionButton from '@/components/atoms/buttons/BaseActionButton'
 import BaseText from '@/components/atoms/BaseText'
-import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'TheDesktopPosterButtons',
   components: {
@@ -48,22 +47,18 @@ export default {
     movieId: {
       type: Number,
       default: null
+    },
+    movieButtonsData: {
+      type: Object,
+      default () { return {} }
     }
   },
-  computed: {
-    ...mapGetters(['movieButtonsData'])
-  },
   methods: {
-    ...mapActions(['likeOrDislike', 'addToWatchedOrWatchlist', 'getWatchlist', 'getWatchedList', 'getRecommendList']),
-
     async likeOrDislikeClick (movieId, action) {
-      await this.likeOrDislike({ movie_id: movieId, action })
-      await this.getRecommendList()
+      this.$emit('likeOrDislikeClick', movieId, action)
     },
     async watchedOrWatchlistClick (movieId, action) {
-      await this.addToWatchedOrWatchlist({ movie_id: movieId, action })
-      await this.getWatchlist('full')
-      await this.getWatchedList('full')
+      this.$emit('watchedOrWatchlistClick', movieId, action)
     }
   }
 }

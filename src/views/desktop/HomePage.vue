@@ -21,8 +21,11 @@
         :slide-direction="slideDirection"
         @posterClick="descriptionActive = true"
       >
-        <TheDesktopPosterButtons
+        <MainButtonsGroup
           :movie-id="movie.id"
+          :movie-buttons-data="movieButtonsData"
+          @likeOrDislikeClick="likeOrDislikeClick"
+          @watchedOrWatchlistClick="watchedOrWatchlistClick"
         />
       </BasePoster>
 
@@ -51,7 +54,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import BasePoster from '@/components/atoms/BasePoster'
 import BaseArrowButton from '@/components/atoms/buttons/BaseArrowButton'
-import TheDesktopPosterButtons from '@/components/TheDesktopPosterButtons'
+import MainButtonsGroup from '@/components/MainButtonsGroup'
 import Description from '@/components/Description/Description'
 import PreRender from '@/components/atoms/PreRender'
 import BaseBlurHover from '@/components/atoms/BaseBlurHover'
@@ -62,7 +65,7 @@ export default {
   components: {
     BasePoster,
     BaseArrowButton,
-    TheDesktopPosterButtons,
+    MainButtonsGroup,
     Description,
     PreRender,
     BaseBlurHover
@@ -78,7 +81,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['movie', 'previous_movie', 'next_movie'])
+    ...mapGetters(['movie', 'previous_movie', 'next_movie', 'movieButtonsData'])
   },
 
   async mounted () {
@@ -86,8 +89,19 @@ export default {
   },
 
   methods: {
-    ...mapActions(['buttonForwardOrBack', 'preDataChanger']),
+    ...mapActions([
+      'buttonForwardOrBack',
+      'preDataChanger',
+      'addToWatchedOrWatchlist',
+      'getWatchlist',
+      'getWatchedList',
+      'likeOrDislike',
+      'getRecommendList'
+    ]),
 
+    check (movieId, action) {
+      console.log(movieId, action, 'emit check')
+    },
     scrollDescription (event) {
       this.descriptionActive = event.deltaY >= 1
     },
@@ -95,9 +109,18 @@ export default {
     onArrowClick (direction) {
       if (direction === 'forward') this.slideDirection = 'forward'
       else if (direction === 'back') this.slideDirection = 'back'
-
       this.preDataChanger(direction)
       this.buttonForwardOrBack(direction)
+    },
+
+    async likeOrDislikeClick (movieId, action) {
+      await this.likeOrDislike({ movie_id: movieId, action })
+      await this.getRecommendList()
+    },
+    async watchedOrWatchlistClick (movieId, action) {
+      await this.addToWatchedOrWatchlist({ movie_id: movieId, action })
+      await this.getWatchlist('full')
+      await this.getWatchedList('full')
     }
   }
 
@@ -115,7 +138,6 @@ export default {
 }
 
 .HomeMain {
-  //background-color: red;
   height: 81vh;
   padding-top: 60px;
   width: 100%;
