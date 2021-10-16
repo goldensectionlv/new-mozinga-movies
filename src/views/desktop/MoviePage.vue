@@ -45,6 +45,14 @@
             bold-text
           />
           <!--          there will be buttons-->
+          <div style="width: 450px; max-width: 90vw">
+            <MainButtonsGroup
+              :movie-buttons-data="movieModalButtonsData"
+              :movie-id="movieModal.id"
+              @likeOrDislikeClick="likeOrDislikeClickModal"
+              @watchedOrWatchlistClick="watchedOrWatchlistClickModal"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -54,13 +62,15 @@
 <script>
 import DescriptionHeader from '@/components/Description/DescriptionHeader'
 import DescriptionBody from '@/components/Description/DescriptionBody'
+import MainButtonsGroup from '@/components/MainButtonsGroup'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'MoviePage',
   components: {
     DescriptionHeader,
-    DescriptionBody
+    DescriptionBody,
+    MainButtonsGroup
   },
   props: {
     activation: {
@@ -74,10 +84,17 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['backdrop', 'movieModal'])
+    ...mapGetters(['backdrop', 'movieModal', 'movieModalButtonsData'])
   },
   methods: {
-    ...mapActions(['toggleMoviePage']),
+    ...mapActions([
+      'toggleMoviePage',
+      'likeOrDislikeModal',
+      'getRecommendList',
+      'addToWatchedOrWatchlistModal',
+      'getWatchlist',
+      'getWatchedList'
+    ]),
     clickClose () {
       if (window.history.length > 2) {
         this.$router.go(-1)
@@ -85,6 +102,16 @@ export default {
         this.$router.push('/')
       }
       this.toggleMoviePage()
+    },
+    async likeOrDislikeClickModal (movieId, action) {
+      await this.likeOrDislikeModal({ movie_id: movieId, action })
+      // await this.getRecommendList()
+    },
+    async watchedOrWatchlistClickModal (movieId, action) {
+      await this.addToWatchedOrWatchlistModal({ movie_id: movieId, action })
+      await this.getWatchlist('full')
+      await this.getWatchedList('full')
+      await this.getRecommendList()
     }
   }
 }

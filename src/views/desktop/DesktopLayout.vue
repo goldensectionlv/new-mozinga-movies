@@ -1,6 +1,26 @@
 <template>
   <main class="main">
-    <DesktopSidebar class="main-left" />
+    <DesktopSidebar
+      v-if="$vuetify.breakpoint.width > 900"
+      class="main-left"
+    />
+
+    <transition
+      v-else
+      name="slide2"
+    >
+      <DesktopSidebar
+        v-if="menuActive && $vuetify.breakpoint.width < 900"
+        v-click-outside="closeMenu"
+        class="main-left2"
+      />
+    </transition>
+
+    <BurgerButton
+      v-if="$vuetify.breakpoint.width < 900"
+      :icon-show-condition="!menuActive"
+      @clickBurger="menuActive = !menuActive"
+    />
 
     <account v-if="accountModalShow" />
 
@@ -51,6 +71,7 @@ import RecommendPage from '@/views/desktop/RecommendPage'
 import account from '@/components/account/account'
 import MoviePage from '@/views/desktop/MoviePage'
 import MoviePageBackdropPreRender from '@/components/atoms/MoviePageBackdropPreRender'
+import BurgerButton from '@/components/atoms/buttons/BurgerButton'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -63,9 +84,20 @@ export default {
     RecommendPage,
     account,
     MoviePage,
-    MoviePageBackdropPreRender
+    MoviePageBackdropPreRender,
+    BurgerButton
   },
-  computed: mapGetters(['accountModalShow', 'moviePageActive'])
+  data () {
+    return {
+      menuActive: false
+    }
+  },
+  computed: mapGetters(['accountModalShow', 'moviePageActive']),
+  methods: {
+    closeMenu () {
+      this.menuActive = false
+    }
+  }
 }
 </script>
 
@@ -74,16 +106,20 @@ export default {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(280px, 21vw) 1fr;
+  grid-template-columns: minmax(260px, 280px) 1fr;
 }
 
 .section {
   position: relative;
 }
 
+.main-left2 {
+  display: none;
+}
+
 @media (max-width: 1124px) {
   .main {
-    grid-template-columns: minmax(280px, 21vw) 1fr;
+    grid-template-columns: minmax(260px, 280px) 1fr;
   }
 }
 
@@ -92,12 +128,25 @@ export default {
     grid-template-columns: 1fr;
   }
   .main-left {
-    //display: none !important;
+    display: none !important;
     position: absolute;
     background-color: rgba(0,0,0,.6);
     backdrop-filter: blur(30px);
     border-radius: unset;
-    transform: translateY(-100%);
+    height: 100%;
+    width: 60%;
+    max-width: 280px;
+    z-index: 3;
+  }
+  .main-left2 {
+    display: flex !important;
+    position: absolute;
+    background-color: rgba(0,0,0,.6);
+    backdrop-filter: blur(30px);
+    border-radius: unset;
+    height: 100%;
+    width: 60%;
+    max-width: 280px;
     z-index: 3;
   }
 }
@@ -111,4 +160,12 @@ export default {
   opacity: 0;
 }
 
+.slide2-enter-active, .slide2-leave-active {
+  transition: ease-out, transform 300ms;
+}
+
+.slide2-enter, .slide2-leave-to {
+  transform: translateX(-100%);
+
+}
 </style>

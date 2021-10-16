@@ -61,7 +61,7 @@ export default {
   padding: 30px 16px !important;
   font-weight: bold;
   letter-spacing: 0;
-  font-size: calc(9px + 6 * (100vw/1280)) !important;
+  font-size: calc(12px + 3 * (100vw/1280));
 
 }
 

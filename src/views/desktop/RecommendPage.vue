@@ -18,7 +18,7 @@
         <span class="recommendSubtitle__left">Похожие на </span>
         <span
           class="recommendSubtitle__right"
-          @click="clickMovieCard(recommend.based_on.backdrop, recommend.based_on.id)"
+          @click="clickMovieCard(recommend.based_on.backdrop, recommend.based_on.id, recommend.based_on.name)"
         >
           {{ recommend.based_on.name }}
         </span>
@@ -32,7 +32,10 @@
           :alt-text="movie.name"
           :backdrop="movie.backdrop"
           :movie-id="movie.id"
-        />
+          :movie-name="movie.name"
+        >
+          {{ movie.name }}
+        </BaseAspectMovieCard>
       </div>
     </div>
   </div>
@@ -56,11 +59,12 @@ export default {
   },
 
   methods: {
-    ...mapActions(['setBackdropForMoviePage', 'toggleMoviePage', 'getMovie']),
+    ...mapActions(['setBackdropForMoviePage', 'toggleMoviePage', 'getMovie', 'setMovieNameToModal']),
 
-    clickMovieCard (backdrop, movieId) {
+    clickMovieCard (backdrop, movieId, movieName) {
       this.$router.push('/movie/' + movieId)
       this.setBackdropForMoviePage(backdrop)
+      this.setMovieNameToModal(movieName)
       this.toggleMoviePage()
       this.getMovie(movieId)
     }
@@ -86,14 +90,15 @@ export default {
   display: grid;
   column-gap: 1%;
   grid-template-columns: repeat(auto-fill, 19%);
+  justify-content: space-between;
 }
 
 .recommendRow {
-  margin-bottom: 21px;
+  margin-bottom: 45px;
 }
 
 .recommendSubtitle {
-  font-size: calc(12px + 4 * (100vw/1280));
+  font-size: calc(12px + 3 * (100vw/1280));
   margin-bottom: 15px;
   &__left {
     font-weight: 800;
@@ -110,9 +115,19 @@ export default {
 
 @media (max-width: 1324px) {
   .grid {
-    column-gap: 3.33%;
-    grid-template-columns: repeat(auto-fill, 31%);
+
+    grid-template-columns: repeat(auto-fill, 23%);
     grid-row-gap: 42px;
+  }
+  .pageContainer {
+    padding: 45px 30px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .grid {
+
+    grid-template-columns: repeat(auto-fill, 31%);
   }
   .pageContainer {
     padding: 45px 30px;

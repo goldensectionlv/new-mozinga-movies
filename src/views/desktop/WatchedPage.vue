@@ -8,7 +8,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
 import BaseGridCardsContainer from '@/components/BaseGridCardsContainer'
 
 export default {

@@ -45,13 +45,19 @@ export default {
     movieId: {
       type: Number,
       default: null
+    },
+    movieName: {
+      type: String,
+      default: ''
     }
+
   },
   methods: {
-    ...mapActions(['toggleMoviePage', 'setBackdropForMoviePage', 'getMovie']),
+    ...mapActions(['toggleMoviePage', 'setBackdropForMoviePage', 'getMovie', 'setMovieNameToModal']),
     clickMovieCard () {
       this.$router.push('/movie/' + this.movieId)
       this.setBackdropForMoviePage(this.backdrop)
+      this.setMovieNameToModal(this.movieName)
       this.toggleMoviePage()
       this.getMovie(this.movieId)
     }

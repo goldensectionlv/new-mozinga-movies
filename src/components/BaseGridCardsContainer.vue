@@ -15,6 +15,7 @@
         :alt-text="movie.name"
         :backdrop="movie.backdrop"
         :movie-id="movie.id"
+        :movie-name="movie.name"
       >
         {{ movie.name }}
       </BaseAspectMovieCard>
@@ -54,11 +55,22 @@ export default {
 .grid {
   display: grid;
   grid-row-gap: 21px;
-  grid-template-columns: repeat(auto-fill, 23%);
+  column-gap: 1%;
+  row-gap: 21px;
+  grid-template-columns: repeat(auto-fill, 19%);
   justify-content: space-between;
 }
 
 @media (max-width: 1324px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, 23%);
+  }
+  .pageContainer {
+    padding: 45px 30px;
+  }
+}
+
+@media (max-width: 1023px) {
   .grid {
     grid-template-columns: repeat(auto-fill, 31%);
   }

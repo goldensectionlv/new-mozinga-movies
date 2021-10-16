@@ -14,8 +14,6 @@
           width: (height / 3) * 2 + 'vh',
           minHeight: '300px',
           minWidth: '150px',
-          maxHeight: '676px',
-          maxWidth: '451px'
         }"
         @click="$emit('posterClick')"
       >
@@ -52,6 +50,10 @@ export default {
 .poster {
   border-radius: 15px;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .img {

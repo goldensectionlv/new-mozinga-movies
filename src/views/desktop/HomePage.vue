@@ -4,7 +4,6 @@
     tabindex="0"
     @keyup.left="onArrowClick('back')"
     @keyup.right="onArrowClick('forward')"
-    @wheel.prevent="scrollDescription"
   >
     <PreRender />
 
@@ -19,7 +18,6 @@
         :thumb-url="movie.thumb_url"
         :alt-text="movie.name_origin"
         :slide-direction="slideDirection"
-        @posterClick="descriptionActive = true"
       >
         <MainButtonsGroup
           :movie-id="movie.id"
@@ -35,17 +33,8 @@
       />
     </div>
 
-    <BaseBlurHover
-      :activate-on="descriptionActive"
-      @close="descriptionActive = false"
-      @wheel.native.prevent="scrollDescription"
-    />
-
     <Description
-      :description-active="descriptionActive"
       :movie="movie"
-      @openDescription="descriptionActive = !descriptionActive"
-      @wheel.native.prevent="scrollDescription"
     />
   </div>
 </template>
@@ -57,7 +46,6 @@ import BaseArrowButton from '@/components/atoms/buttons/BaseArrowButton'
 import MainButtonsGroup from '@/components/MainButtonsGroup'
 import Description from '@/components/Description/Description'
 import PreRender from '@/components/atoms/PreRender'
-import BaseBlurHover from '@/components/atoms/BaseBlurHover'
 
 export default {
   name: 'HomePage',
@@ -67,27 +55,18 @@ export default {
     BaseArrowButton,
     MainButtonsGroup,
     Description,
-    PreRender,
-    BaseBlurHover
+    PreRender
+
   },
 
   data () {
     return {
-      descriptionActive: false,
-      animation: false,
-      slideDirection: '',
-      closeAfterScroll: false
+      slideDirection: ''
     }
   },
-
   computed: {
     ...mapGetters(['movie', 'previous_movie', 'next_movie', 'movieButtonsData'])
   },
-
-  async mounted () {
-    this.animation = true
-  },
-
   methods: {
     ...mapActions([
       'buttonForwardOrBack',
@@ -98,13 +77,6 @@ export default {
       'likeOrDislike',
       'getRecommendList'
     ]),
-
-    check (movieId, action) {
-      console.log(movieId, action, 'emit check')
-    },
-    scrollDescription (event) {
-      this.descriptionActive = event.deltaY >= 1
-    },
 
     onArrowClick (direction) {
       if (direction === 'forward') this.slideDirection = 'forward'
@@ -134,16 +106,17 @@ export default {
   flex-direction: column;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .HomeMain {
-  height: 81vh;
+  height: calc(100% - 130px);
   padding-top: 60px;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  //background-color: #ffbdbd;
 }
 
 *:focus {

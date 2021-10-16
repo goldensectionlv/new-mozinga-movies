@@ -1,7 +1,7 @@
 <template>
   <div
     class="description-header"
-    :class="{'header-active': descriptionActive, 'forModalFix': forModalFix}"
+    :class="{'forModalFix': forModalFix}"
   >
     <BaseText
       :description-header-text="!bigText"
@@ -34,10 +34,6 @@ export default {
     BaseText
   },
   props: {
-    descriptionActive: {
-      type: Boolean,
-      default: false
-    },
     movieName: {
       type: String,
       default: ''
@@ -47,8 +43,8 @@ export default {
       default: ''
     },
     movieYear: {
-      type: Number,
-      default: null
+      type: [Number, String],
+      default: ''
     },
     bigText: {
       type: Boolean,

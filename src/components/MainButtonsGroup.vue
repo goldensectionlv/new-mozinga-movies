@@ -68,6 +68,7 @@ export default {
 .poster-buttons {
   display: flex;
   width: 100%;
+  min-width: 300px;
   justify-content: space-between;
   margin-top: 12px;
   padding-bottom: 21px;

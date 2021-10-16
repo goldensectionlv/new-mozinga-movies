@@ -2,18 +2,15 @@
   <div
     id="description"
     class="description"
-    :class="{ 'descriptionInactive': !descriptionActive }"
   >
     <DescriptionHeader
       :movie-name="movie.name"
       :movie-name-origin="movie.name_origin"
       :movie-year="movie.year"
-      :description-active="descriptionActive"
       @click.native="$emit('openDescription')"
     />
 
     <DescriptionBody
-      v-if="descriptionActive"
       class="descriptionBody"
       :actors="movie.actors"
       :genres="movie.genres"
@@ -36,10 +33,6 @@ export default {
     DescriptionBody
   },
   props: {
-    descriptionActive: {
-      type: Boolean,
-      default: false
-    },
     movie: {
       type: Object,
       default () { return {} }
@@ -57,11 +50,12 @@ export default {
   bottom: 0;
   border-top-right-radius: 21px;
   border-top-left-radius: 21px;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .03);
   padding: 0 42px 42px 42px;
   transition: background-color 300ms ease, transform 300ms;
   z-index: 2;
   overflow-y: scroll;
+  transform: translateY(calc(100% - 130px));
 }
 
 .descriptionInactive {
