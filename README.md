@@ -1,5 +1,7 @@
 # mozinga-movies dev in progress
 
+![схема](https://github.com/goldensectionlv/new-mozinga-movies/raw/master/screen.png)
+
 ## Project setup
 ```
 npm install
